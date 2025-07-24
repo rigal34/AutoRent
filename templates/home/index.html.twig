@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h1>HOME TEST {{ controller_name }}! ✅</h1>
+    {% if app.user %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">Déconnection</a>
+   {% else %}
+      <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connection</a>
+    {% endif %}
+</div>
+{% endblock %}
