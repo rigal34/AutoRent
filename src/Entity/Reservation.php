@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use DateTimeImmutable;
+
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -15,13 +17,13 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?\DateTime $dateReservation = null;
+    private ?\DateTimeImmutable $dateReservation = null;
 
     #[ORM\Column]
-    private ?\DateTime $dateDebut = null;
+    private ?\DateTimeImmutable $dateDebut = null;
 
     #[ORM\Column]
-    private ?\DateTime $dateFin = null;
+    private ?\DateTimeImmutable $dateFin = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $prixTotal = null;
@@ -41,36 +43,36 @@ class Reservation
         return $this->id;
     }
 
-    public function getDateReservation(): ?\DateTime
+    public function getDateReservation(): ?\DateTimeImmutable
     {
         return $this->dateReservation;
     }
 
-    public function setDateReservation(\DateTime $dateReservation): static
+    public function setDateReservation(\DateTimeImmutable $dateReservation): static
     {
         $this->dateReservation = $dateReservation;
 
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTime
+     public function getDateDebut(): ?\DateTimeImmutable
     {
         return $this->dateDebut;
     }
 
-    public function setDateDebut(\DateTime $dateDebut): static
+    public function setDateDebut(\DateTimeImmutable $dateDebut): static
     {
         $this->dateDebut = $dateDebut;
 
         return $this;
     }
 
-    public function getDateFin(): ?\DateTime
+    public function getDateFin(): ?\DateTimeImmutable
     {
         return $this->dateFin;
     }
 
-    public function setDateFin(\DateTime $dateFin): static
+    public function setDateFin(\DateTimeImmutable $dateFin): static
     {
         $this->dateFin = $dateFin;
 
