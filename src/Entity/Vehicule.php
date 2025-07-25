@@ -31,8 +31,7 @@ class Vehicule
     #[ORM\Column(length: 255)]
     private ?string $motorisation = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $statut = null;
+   
 
     #[ORM\ManyToOne(inversedBy: 'vehicules')]
     #[ORM\JoinColumn(nullable: false)]
@@ -43,6 +42,9 @@ class Vehicule
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'vehicule')]
     private Collection $reservations;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $statut = null;
 
     public function __construct()
     {
@@ -114,17 +116,7 @@ class Vehicule
         return $this;
     }
 
-    public function getStatut(): ?string
-    {
-        return $this->statut;
-    }
-
-    public function setStatut(string $statut): static
-    {
-        $this->statut = $statut;
-
-        return $this;
-    }
+   
 
     public function getCategorie(): ?Categorie
     {
@@ -159,11 +151,23 @@ class Vehicule
     public function removeReservation(Reservation $reservation): static
     {
         if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
+          
             if ($reservation->getVehicule() === $this) {
                 $reservation->setVehicule(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isStatut(): ?bool
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?bool $statut): static
+    {
+        $this->statut = $statut;
 
         return $this;
     }

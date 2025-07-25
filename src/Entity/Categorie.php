@@ -67,7 +67,7 @@ class Categorie
     public function removeVehicule(Vehicule $vehicule): static
     {
         if ($this->vehicules->removeElement($vehicule)) {
-            // set the owning side to null (unless already changed)
+            
             if ($vehicule->getCategorie() === $this) {
                 $vehicule->setCategorie(null);
             }
@@ -75,4 +75,12 @@ class Categorie
 
         return $this;
     }
+
+
+
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
+    
 }
