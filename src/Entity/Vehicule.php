@@ -33,9 +33,9 @@ class Vehicule
 
    
 
-    #[ORM\ManyToOne(inversedBy: 'vehicules')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Categorie $categorie = null;
+    // #[ORM\ManyToOne(inversedBy: 'vehicules')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private ?Categorie $categorie = null;
 
     /**
      * @var Collection<int, Reservation>
@@ -46,9 +46,16 @@ class Vehicule
     #[ORM\Column(nullable: true)]
     private ?bool $statut = null;
 
+    /**
+     * @var Collection<int, Categorie>
+     */
+    #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'vehicules')]
+    private Collection $categories;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -118,17 +125,17 @@ class Vehicule
 
    
 
-    public function getCategorie(): ?Categorie
-    {
-        return $this->categorie;
-    }
+    // public function getCategorie(): ?Categorie
+    // {
+    //     return $this->categorie;
+    // }
 
-    public function setCategorie(?Categorie $categorie): static
-    {
-        $this->categorie = $categorie;
+    // public function setCategorie(?Categorie $categorie): static
+    // {
+    //     $this->categorie = $categorie;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Reservation>
@@ -168,6 +175,30 @@ class Vehicule
     public function setStatut(?bool $statut): static
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categorie>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categorie $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categorie $category): static
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }

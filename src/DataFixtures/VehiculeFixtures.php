@@ -89,7 +89,7 @@ class VehiculeFixtures extends Fixture implements DependentFixtureInterface
             $vehicule->setImagePrincipale($data['imagePrincipale']);
             $vehicule->setMotorisation($data['motorisation']);
             $vehicule->setStatut($data['statut']);
-            $vehicule->setCategorie($data['categorie']);
+            $vehicule->addCategory($data['categorie']);
 
             $manager->persist($vehicule);
             $this->addReference('vehicule_' . strtolower(str_replace(' ', '_', $data['nom'])), $vehicule);

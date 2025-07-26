@@ -21,11 +21,18 @@ class Categorie
     /**
      * @var Collection<int, Vehicule>
      */
-    #[ORM\OneToMany(targetEntity: Vehicule::class, mappedBy: 'categorie')]
+    #[ORM\ManyToMany(targetEntity: Vehicule::class, mappedBy: 'categories')]
     private Collection $vehicules;
+
+    /**
+     * @var Collection<int, Vehicule>
+     */
+    //  #[ORM\OneToMany(targetEntity: Vehicule::class, mappedBy: 'categorie')]
+    //  private Collection $vehicules;
 
     public function __construct()
     {
+       
         $this->vehicules = new ArrayCollection();
     }
 
@@ -49,6 +56,43 @@ class Categorie
     /**
      * @return Collection<int, Vehicule>
      */
+    // public function getVehicules(): Collection
+    // {
+    //     return $this->vehicules;
+    // }
+
+    // public function addVehicule(Vehicule $vehicule): static
+    // {
+    //     if (!$this->vehicules->contains($vehicule)) {
+    //         $this->vehicules->add($vehicule);
+    //        // $vehicule->setCategorie($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeVehicule(Vehicule $vehicule): static
+    // {
+    //     if ($this->vehicules->removeElement($vehicule)) {
+            
+    //         if ($vehicule->getCategorie() === $this) {
+    //             $vehicule->setCategorie(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
+
+
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return Collection<int, Vehicule>
+     */
     public function getVehicules(): Collection
     {
         return $this->vehicules;
@@ -58,7 +102,7 @@ class Categorie
     {
         if (!$this->vehicules->contains($vehicule)) {
             $this->vehicules->add($vehicule);
-            $vehicule->setCategorie($this);
+            $vehicule->addCategory($this);
         }
 
         return $this;
@@ -67,20 +111,10 @@ class Categorie
     public function removeVehicule(Vehicule $vehicule): static
     {
         if ($this->vehicules->removeElement($vehicule)) {
-            
-            if ($vehicule->getCategorie() === $this) {
-                $vehicule->setCategorie(null);
-            }
+            $vehicule->removeCategory($this);
         }
 
         return $this;
-    }
-
-
-
-    public function __toString(): string
-    {
-        return $this->nom;
     }
     
 }

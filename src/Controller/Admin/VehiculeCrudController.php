@@ -51,7 +51,7 @@ class VehiculeCrudController extends AbstractCrudController
                     ->setUploadDir('public/images')
                     ->setRequired(false)
                     ->setFormTypeOptions(['attr' => ['accept' => 'image/*']]),
-                AssociationField::new('categorie'), // Permet de choisir la catégorie
+                AssociationField::new('categories', 'Catégories'), 
             ];
         }
     }
