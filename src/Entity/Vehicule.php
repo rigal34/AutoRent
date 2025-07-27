@@ -15,27 +15,29 @@ class Vehicule
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
-
+    
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    // #[ORM\Column(length: 255, nullable: true)]
+    //  private ?string $image = null;
+    
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $tarifJournalier = null;
-
+    
     #[ORM\Column(length: 255)]
     private ?string $imagePrincipale = null;
-
+    
     #[ORM\Column(length: 255)]
     private ?string $motorisation = null;
-
+    
+    #[ORM\Column(nullable: true)] // Cette annotation est cruciale pour le stockage du tableau
+     private ?array $images = null; // La propriété pour les noms des images multiples
    
 
-    // #[ORM\ManyToOne(inversedBy: 'vehicules')]
-    // #[ORM\JoinColumn(nullable: false)]
-    // private ?Categorie $categorie = null;
 
     /**
      * @var Collection<int, Reservation>
@@ -122,20 +124,42 @@ class Vehicule
 
         return $this;
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////
+    // Ajout des méthodes pour gérer les images multiples
+    // Ces méthodes sont utilisées par EasyAdmin pour afficher et gérer les images multiples
+    // Elles doivent correspondre à la propriété $images définie ci-dessus
+//    public function getImage(): ?string
+//     {
+//         return $this->image;
+//     }
 
-   
+//     public function setImage(?string $image): static
+//     {
+//         $this->image = $image;
 
-    // public function getCategorie(): ?Categorie
-    // {
-    //     return $this->categorie;
-    // }
+//         return $this;
+//     }
 
-    // public function setCategorie(?Categorie $categorie): static
-    // {
-    //     $this->categorie = $categorie;
+/////////////////////////////////////////////////////////////////////////////////////////
+    // Méthodes pour gérer les images multiples
+    // Ces méthodes sont utilisées par EasyAdmin pour afficher et gérer les images multiples
+    // Elles doivent correspondre à la propriété $images définie ci-dessus
 
-    //     return $this;
-    // }
+///////////////////////////////////////////////////////////////////////////////////////////////
+    public function getImages(): ?array
+    {
+        return $this->images;
+    }
+
+    public function setImages(?array $images): static
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     /**
      * @return Collection<int, Reservation>
