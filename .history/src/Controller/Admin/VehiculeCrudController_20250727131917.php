@@ -50,9 +50,10 @@ class VehiculeCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'multiple' => true, // Permet l'upload de plusieurs fichiers
                     'attr' => ['accept' => 'image/*'], // Filtre les types de fichiers
-                    
+                    // 'mapped' => false, // Non, on ne met pas mapped à false ici si EasyAdmin gère l'array directement
+                                        // Si EasyAdmin gère le JSON directement, il faut faire confiance
                 ]),
-            
+            // --- FIN GESTION IMAGES MULTIPLES ---
         ];
     }
 

@@ -10,8 +10,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField; 
-
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField; // Ajoute cette ligne pour le TextField
+// Si tu as un constructeur avec Slugger, garde-le, sinon supprime la ligne use et le constructeur
+// use Symfony\Component\String\Slugger\SluggerInterface; // Garder si utilisé
 
 class VehiculeCrudController extends AbstractCrudController
 {
@@ -50,11 +51,19 @@ class VehiculeCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'multiple' => true, // Permet l'upload de plusieurs fichiers
                     'attr' => ['accept' => 'image/*'], // Filtre les types de fichiers
-                    
+                    // 'mapped' => false, // Non, on ne met pas mapped à false ici si EasyAdmin gère l'array directement
+                                        // Si EasyAdmin gère le JSON directement, il faut faire confiance
                 ]),
-            
+            // --- FIN GESTION IMAGES MULTIPLES ---
         ];
     }
 
-    
+    // Si tu as un persistEntity qui gére le slug, garde-le. Sinon, tu n'en as pas besoin.
+    // public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    // {
+    //    if (!$entityInstance instanceof Vehicule) return;
+    //    // Si tu avais du slug ici pour Vehicule:
+    //    // $entityInstance->setSlug($this->slugger->slug($entityInstance->getNom())->lower());
+    //    parent::persistEntity($entityManager, $entityInstance);
+    // }
 }

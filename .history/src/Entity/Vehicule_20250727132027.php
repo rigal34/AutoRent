@@ -22,7 +22,8 @@ class Vehicule
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-   
+    // #[ORM\Column(length: 255, nullable: true)]
+    //  private ?string $image = null;
     
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $tarifJournalier = null;

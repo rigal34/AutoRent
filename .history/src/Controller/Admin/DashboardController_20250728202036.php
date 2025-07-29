@@ -10,7 +10,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Categorie;
 use App\Entity\Vehicule;
-use App\Entity\Actualite;
 use App\Controller\Admin\CategorieCrudController;
 use App\Controller\Admin\VehiculeCrudController;
 
@@ -53,8 +52,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Catégories', 'fa fa-list', Categorie::class);
         yield MenuItem::linkToCrud('Véhicules', 'fa fa-car', Vehicule::class);
-        yield MenuItem::section('Actualités'); 
-        yield MenuItem::linkToCrud('Actualités', 'fa fa-newspaper', Actualite::class); 
+        
 
     }
 }

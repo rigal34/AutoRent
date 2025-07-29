@@ -15,26 +15,22 @@ class Vehicule
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    
+
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
-    
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-   
-    
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $tarifJournalier = null;
-    
+
     #[ORM\Column(length: 255)]
     private ?string $imagePrincipale = null;
-    
+
     #[ORM\Column(length: 255)]
     private ?string $motorisation = null;
-    
-    #[ORM\Column(nullable: true)] 
-     private ?array $images = null; 
+
    
 
 
@@ -124,20 +120,9 @@ class Vehicule
         return $this;
     }
 
-    public function getImages(): ?array
-    {
-        return $this->images;
-    }
+   
 
-    public function setImages(?array $images): static
-    {
-        $this->images = $images;
-
-        return $this;
-    }
-
-
-
+   
 
     /**
      * @return Collection<int, Reservation>

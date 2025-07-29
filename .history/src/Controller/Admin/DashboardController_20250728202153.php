@@ -53,8 +53,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Catégories', 'fa fa-list', Categorie::class);
         yield MenuItem::linkToCrud('Véhicules', 'fa fa-car', Vehicule::class);
-        yield MenuItem::section('Actualités'); 
-        yield MenuItem::linkToCrud('Actualités', 'fa fa-newspaper', Actualite::class); 
+        yield MenuItem::section('Actualités'); // Nouvelle section pour les actualités
+        yield MenuItem::linkToCrud('Actualités', 'fa fa-newspaper', Actualite::class); // AJOUTE CETTE LIGNE
 
     }
 }

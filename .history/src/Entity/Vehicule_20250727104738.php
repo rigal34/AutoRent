@@ -15,26 +15,22 @@ class Vehicule
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    
+
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
-    
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-   
-    
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $tarifJournalier = null;
-    
+
     #[ORM\Column(length: 255)]
     private ?string $imagePrincipale = null;
-    
+
     #[ORM\Column(length: 255)]
     private ?string $motorisation = null;
-    
-    #[ORM\Column(nullable: true)] 
-     private ?array $images = null; 
+
    
 
 
@@ -124,6 +120,9 @@ class Vehicule
         return $this;
     }
 
+   #[ORM\Column(nullable: true)] // Cette annotation est cruciale pour le stockage du tableau
+    private ?array $images = null; // La propriété pour les noms des images multiples
+
     public function getImages(): ?array
     {
         return $this->images;
@@ -135,9 +134,6 @@ class Vehicule
 
         return $this;
     }
-
-
-
 
     /**
      * @return Collection<int, Reservation>

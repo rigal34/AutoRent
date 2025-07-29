@@ -22,7 +22,8 @@ class Vehicule
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-   
+    // #[ORM\Column(length: 255, nullable: true)]
+    //  private ?string $image = null;
     
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $tarifJournalier = null;
@@ -33,7 +34,7 @@ class Vehicule
     #[ORM\Column(length: 255)]
     private ?string $motorisation = null;
     
-    #[ORM\Column(nullable: true)] 
+    #[ORM\Column(nullable: true)] // Cette annotation est cruciale pour le stockage du tableau
      private ?array $images = null; 
    
 
