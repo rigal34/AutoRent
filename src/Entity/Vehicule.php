@@ -41,7 +41,7 @@ class Vehicule
     /**
      * @var Collection<int, Reservation>
      */
-    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'vehicule')]
+    #[ORM\OneToMany(mappedBy: 'vehicule', targetEntity: Reservation::class, orphanRemoval: true, cascade: ['remove'])]//NEGOTIER AVEC LE PROF 
     private Collection $reservations;
 
     #[ORM\Column(nullable: true)]
