@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoRent</title>
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm rounded">
+        <div class="container-fluid">
+            <!-- Logo positionné à gauche -->
+            <a class="navbar-brand" href="#">AutoRent</a>
+
+            <!-- Bouton burger positionné à droite -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenu du menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Menu principal centré -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="#">Nos Véhicules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="#">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Boutons positionnement de mes boutons à droite -->
+                <div class="btn-container d-flex">
+                    <a href="{{ path('app_login') }}" class="btn btn-outline-success">Connexion</a>
+                    <a href="{{ path('app_register') }}" class="btn btn-outline-success">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <!-- Contenu principal -->
+    {# <div class="container-fluid p-0">
+        <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1504610926078-a1611febcad3"
+                 class="w-100"
+                 style="height: 400px; object-fit: cover;">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white"
+                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                <h1 class="display-4 fw-bold">Bienvenue sur notre site de location de véhicules</h1>
+                <p class="fs-4">Louez le véhicule de vos rêves en quelques clics.</p>
+            </div>
+        </div>
+    </div> #}
+</body>
+</html>

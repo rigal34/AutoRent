@@ -1,0 +1,8 @@
+   import { alert} from 'https://cdn.jsdelivr.net/npm/bootstrap@11';
+
+
+/* Removed invalid import statement */
+
+body {
+    background-color: skyblue;
+}

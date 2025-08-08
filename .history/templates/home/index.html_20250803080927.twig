@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+{# <div class="example-wrapper">
+    <h1>HOME TEST {{ controller_name }}! ✅</h1>
+    {% if app.user %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">Déconnection</a>
+   {% else %}
+      <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connection</a>
+    {% endif %}
+</div> #}
+
+A template that extends another one cannot include content outside Twig blocks. Did you forget to put the content inside a {% block %} tag in home/index.html.twig at line 4?
+Twig\Error\
+SyntaxError
+Show exception properties
+in C:\xampp\htdocs\AutoRent\templates\home\index.html.twig (line 4)
+{% extends 'base.html.twig' %}{% block title %}Hello HomeController!{% endblock %}<div id="carouselExampleCaptions" class="carousel slide">  <div class="carousel-indicators">    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>  </div>
+Parser->filterBodyNodes(object(TextNode), false)
+in C:\xampp\htdocs\AutoRent\vendor\twig\twig\src\Parser.php (line 562)
+Parser->filterBodyNodes(object(Nodes))
+in C:\xampp\htdocs\AutoRent\vendor\twig\twig\src\Parser.php (line 103)
+Parser->parse(object(TokenStream))
+in C:\xampp\htdocs\AutoRent\vendor\twig\twig\src\Environment.php (line 558)
+Environment->parse(object(TokenStream))
+in C:\xampp\htdocs\AutoRent\vendor\twig\twig\src\Environment.php (line 589)
+Environment->compileSource(object(Source))
+in C:\xampp\htdocs\AutoRent\vendor\twig\twig\src\Environment.php (line 408)
+Environment->loadTemplate('__TwigTemplate_a938ace4bdee5025865f5b1bba8754c8', 'home/index.html.twig')
+in C:\xampp\htdocs\AutoRent\vendor\twig\twig\src\Environment.php (line 370)
+Environment->load('home/index.html.twig')
+in C:\xampp\htdocs\AutoRent\vendor\twig\twig\src\Environment.php (line 333)
+Environment->render('home/index.html.twig', array('controller_name' => 'HomeController'))
+in C:\xampp\htdocs\AutoRent\vendor\symfony\framework-bundle\Controller\AbstractController.php (line 448)
+AbstractController->doRenderView('home/index.html.twig', null, array('controller_name' => 'HomeController'), 'render')
+in C:\xampp\htdocs\AutoRent\vendor\symfony\framework-bundle\Controller\AbstractController.php (line 453)
+AbstractController->doRender('home/index.html.twig', null, array('controller_name' => 'HomeController'), null, 'render')
+in C:\xampp\htdocs\AutoRent\vendor\symfony\framework-bundle\Controller\AbstractController.php (line 253)
+AbstractController->render('home/index.html.twig', array('controller_name' => 'HomeController'))
+in C:\xampp\htdocs\AutoRent\src\Controller\HomeController.php (line 14)
+HomeController->home()
+in C:\xampp\htdocs\AutoRent\vendor\symfony\http-kernel\HttpKernel.php (line 181)
+HttpKernel->handleRaw(object(Request), 1)
+in C:\xampp\htdocs\AutoRent\vendor\symfony\http-kernel\HttpKernel.php (line 76)
+HttpKernel->handle(object(Request), 1, true)
+in C:\xampp\htdocs\AutoRent\vendor\symfony\http-kernel\Kernel.php (line 197)
+Kernel->handle(object(Request))
+in C:\xampp\htdocs\AutoRent\vendor\symfony\runtime\Runner\Symfony\HttpKernelRunner.php (line 35)
+HttpKernelRunner->run()
+in C:\xampp\htdocs\AutoRent\vendor\autoload_runtime.php (line 29)
+require_once('C:\\xampp\\htdocs\\AutoRent\\vendor\\autoload_runtime.php')
+in C:\xampp\htdocs\AutoRent\public\index.php (line 5)
+
+
+{% endblock %}

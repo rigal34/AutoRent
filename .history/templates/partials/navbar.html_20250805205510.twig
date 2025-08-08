@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoRent</title>
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+    <style>
+        /* Styles spécifiques pour le positionnement */
+        .navbar {
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            margin: 0 1rem;
+            font-weight: 500;
+        }
+
+        .btn-container {
+            margin-left: auto !important;
+            margin-right: 1rem;
+        }
+
+        .btn {
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .btn-container {
+                margin-left: 0;
+                margin-top: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+            <!-- Logo positionné à gauche -->
+            <a class="navbar-brand" href="#">AutoRent</a>
+
+            <!-- Bouton burger positionné à droite -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenu du menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Menu principal centré -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nos Véhicules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Boutons positionnés à droite -->
+                <div class="btn-container d-flex">
+                    <a href="#" class="btn btn-outline-primary">Connexion</a>
+                    <a href="#" class="btn btn-primary">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="container-fluid p-0">
+        <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1504610926078-a1611febcad3"
+                 class="w-100"
+                 style="height: 400px; object-fit: cover;">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white"
+                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                <h1 class="display-4 fw-bold">Bienvenue sur notre site de location de véhicules</h1>
+                <p class="fs-4">Louez le véhicule de vos rêves en quelques clics.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

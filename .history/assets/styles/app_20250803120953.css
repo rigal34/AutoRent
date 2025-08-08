@@ -1,0 +1,8 @@
+import './bootstrap.js';
+
+
+/* Removed invalid import statement */
+
+body {
+    background-color: skyblue;
+}

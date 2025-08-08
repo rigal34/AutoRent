@@ -1,0 +1,81 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+@import "_custom.css";
+.navbar {
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            margin: 0 1rem;
+            font-weight: 500;
+        }
+
+        .btn-container {
+            margin-left: auto !important;
+            margin-right: 1rem;
+        }
+
+        .btn {
+            margin: 0 0.5rem;
+        }
+         
+        
+        /* TEXT DE BIENVENUE */
+        #hero-title {
+             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+        
+        #hero-subtitle {
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+/* IMAGE PRINCIPALE */
+
+/* .carousel-item {
+  height: 600px; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#slide-1 {
+  background-image: url('public/images/a-ford-ka-car-is-driving-down-a-country-road-with-the-sun-setting-behind-it.jpg');
+}
+
+#slide-2 {
+  background-image: url('../images/votre-image-2.jpg');
+}
+
+#slide-3 {
+  background-image: url('../images/votre-image-3.jpg');
+} */
+
+
+
+
+
+
+
+
+
+
+        @media (max-width: 991.98px) {
+            .btn-container {
+                margin-left: 0;
+                margin-top: 1rem;
+                text-align: center;
+            }
+        }
+
+
+body {
+  background-color: white;
+
+}

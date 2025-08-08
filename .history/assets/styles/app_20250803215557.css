@@ -1,0 +1,13 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+@import "_custom.css";
+
+.navbar-links-custom-gap {
+    gap: 22.5rem; 
+}
+
+body {
+    
+    background-color: skyblue;
+}

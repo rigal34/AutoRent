@@ -1,0 +1,98 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+@import "_custom.css";
+
+
+.navbar {
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            margin: 0 1rem;
+            font-weight: 500;
+        }
+
+        .btn-container {
+            margin-left: auto !important;
+            margin-right: 1rem;
+        }
+
+        .btn {
+            margin: 0 0.5rem;
+        }
+
+
+        /* Bienvenue sur notre site de location de véhicules */
+        #hero-title {
+             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+        /* Louez le véhicule de vos rêves */
+        #hero-subtitle {
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Votre aventure commence ici */
+        .text-title-with-stroke {
+           color: white; 
+          -webkit-text-stroke: 1px black; 
+           text-shadow:0px 2px 16px #000;
+    
+        }
+     
+       
+      
+       /* Custom image height for carousel */
+        .custom-img-height {
+            height: 750px;
+            object-fit: cover;
+    }
+
+        /* Responsive adjustments */  
+        
+        
+        @media (max-width: 991.98px) {
+            .btn-container {
+                margin-left: 0;
+                margin-top: 1rem;
+                text-align: center;
+            }
+        }
+
+       @media (max-widdth: 768px) {
+            .navbar-brand {
+                margin-left: 1rem;
+            }
+            .nav-link {
+                margin: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            #hero-title {
+                font-size: 1.5rem;
+            }
+            #hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Custom styles for the navbar */
+        .navbar-dark .navbar-nav .nav-link.active, 
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #28a745; /* Green color for active and hover states */
+        
+       }
+
+
+
+body {
+  background-color: white;
+
+}
