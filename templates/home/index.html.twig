@@ -56,43 +56,20 @@
       <h2 class="text-center my-auto fw-bold">Parcourir par catégorie</h2>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="/images/S.U.V.png" class="card-img-top" alt="S.U.V">
-                        <div class="card-body text-center">
-                             <a class="nav-link text-dark" href="#">Voir les S.U.V</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="/images/utilitaire.png" class="card-img-top" alt="Utilitaires">
-                        <div class="card-body text-center ">
-                             <a class="nav-link text-dark" href="#">Voir les utilitaires</a>
-                            
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="/images/tmax.png" class="card-img-top" alt="Motos">
-                        <div class="card-body text-center">
-                             <a class="nav-link text-dark" href="#">Voir les motos</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="/images/citadine.png" class="card-img-top" alt="Citadine">
-                        <div class="card-body text-center">
-                             <a class="nav-link text-dark" href="#">Voir les citadines</a>
-
-                        </div>
-                    </div>
-                </div>
+          
+        
+        {% for categorie in categories %}
+    <div class="col-md-3">
+        <div class="card mb-3 shadow-sm"> 
+            <img src="{{ asset('images/' ~ categorie.image) }}" class="card-img-top" alt="{{ categorie.nom }}">
+            <div class="card-body text-center">
+                <a class="nav-link text-dark" href="#"><strong>Voir les {{ categorie.nom }}</strong></a>
             </div>
-
         </div>
+    </div>
+{% endfor %}
+        
+            </div>
+        </div>
+                       
 	{% endblock %}
