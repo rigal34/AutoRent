@@ -26,8 +26,9 @@
 
         {% include 'partials/footer.html.twig' %}
 
-        
-        
+    {% block javascripts %}
+        <script src="{{ asset('js/app.js') }}"></script>
+        {% block additional_javascripts %}{% endblock %}
   
 </body>
 </html>
