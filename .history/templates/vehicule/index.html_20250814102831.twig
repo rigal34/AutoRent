@@ -1,16 +1,14 @@
-{# templates/categorie/show.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Catégorie : {{ categorie.nom }}{% endblock %}
+{% block title %}Véhicule : {{ vehicule.nom }}{% endblock %}
 
 {% block body %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Véhicules de la catégorie : <strong>{{ categorie.nom }}</strong></h1>
+ <div class="container mt-4">
+        <h1 class="mb-4">Véhicule : <strong>{{ vehicule.nom }}</strong></h1>
         
         <div class="row">
-            {# On fait une boucle sur les véhicules qui sont DANS la catégorie #}
-            {# La variable "categorie" nous a été envoyée par le contrôleur #}
-            {% for vehicule in categorie.vehicules %}
+           
+            {% for vehicule in c.vehicules %}
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                        
@@ -33,4 +31,6 @@
             {% endfor %}
         </div>
     </div>
+
+
 {% endblock %}

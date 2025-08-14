@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Véhicule :
+	{{ vehicules.nom }}
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<div class="row">
+			<h1 class="mb-4">Véhicule :
+			</h1>
+			{% for vehicule in vehicules %}{% endfor %}
+				<strong>{{ vehicule.nom }}</strong>
+
+		</div>
+
+
+	{% endblock %}

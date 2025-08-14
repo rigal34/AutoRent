@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Notre Catalogue de Véhicules{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+       
+        <h1 class="text-center mb-3">Notre Catalogue de Véhicules</h1>
+        
+        <div class="row">
+
+          
+            {% for vehicule in vehicules %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <img src="{{ asset('images/' ~ vehicule.imagePrincipale) }}" class="card-img-top" alt="{{ vehicule.nom }}" style="height: 225px; object-fit: cover;">
+                       
+                        <div class="card-body">
+                          
+                           
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
