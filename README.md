@@ -179,3 +179,11 @@ Logique Contrôleur/Repository : Utilisation propre du modèle MVC de Symfony. C
 Routing Dynamique : Mise en place de routes dynamiques avec des paramètres (ParamConverter) pour générer des pages de manière intelligente et automatique.
 
 Intégration Front-End Moderne : Le projet est stylisé avec Bootstrap 5 et Font Awesome, installés et gérés via importmap (AssetMapper), la méthode moderne de Symfony sans Node.js.
+
+ Ajout de la page catalogue "Nos Véhicules"
+
+- Création du VehiculeController et de la route /vehicules pour afficher tous les véhicules.
+- Utilisation du VehiculeRepository pour récupérer les données depuis la base de données.
+- Création du template vehicule/index.html.twig avec une boucle pour afficher les véhicules sous forme de cartes Bootstrap.
+- Correction et finalisation des styles de la barre de navigation (Navbar) et du pied de page (Footer).
+- Ajout de liens dynamiques sur les images des véhicules pointant vers leurs pages de catégorie respectives.

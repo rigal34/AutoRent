@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Notre Catalogue de Véhicules
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+
+		<h1 class="text-center mb-3">Notre Catalogue de Véhicules</h1>
+
+		<div class="row">
+
+
+			{% for vehicule in vehicules %}
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+                     {% if vehicule.categories is not empty %}
+						<a href="{{ path('app_categorie_show', {'id': vehicule.categories|first.id}) }}">
+							<img src="{{ asset('images/' ~ vehicule.imagePrincipale) }}" class="card-img-top vehicle-card-image" alt="{{ vehicule.nom }}">
+						</a>
+						<div class="card-body">
+							<h5 class="card-title">{{ vehicule.nom }}</h5>
+							<p class="card-text">{{ vehicule.description|slice(0, 80) ~ '...' }}</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<a href="#" class="btn btn-primary">Voir détails</a>
+								<span class="text-muted fs-5">
+									<strong>{{ vehicule.tarifJournalier }}
+										€</strong>/jour</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+{% endblock %}
