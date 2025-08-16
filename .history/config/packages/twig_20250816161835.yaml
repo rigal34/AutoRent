@@ -1,0 +1,17 @@
+# twig:
+#     file_name_pattern: '*.twig'
+
+# when@test:
+#     twig:
+#         strict_variables: true
+# config/packages/twig.yaml
+twig:
+    file_name_pattern: '*.twig'
+    
+    # C'est cette ligne qu'on ajoute.
+    # Elle doit être bien alignée (avec deux espaces) sous "twig:".
+    form_themes: ['bootstrap_5_layout.html.twig']
+
+when@test:
+    twig:
+        strict_variables: true
