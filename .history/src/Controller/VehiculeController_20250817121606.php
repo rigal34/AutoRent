@@ -23,7 +23,7 @@ final class VehiculeController extends AbstractController
     }
 
 
-    #[Route('/vehicule/{id}', name: 'app_vehicule_show')]
+    #[Route('/vehicule/{id}', name: 'app_vehicule')]
     public function detailVehicule(Vehicule $vehicule): Response
     {
 
