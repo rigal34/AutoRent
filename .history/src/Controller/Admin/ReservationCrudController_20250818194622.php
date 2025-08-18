@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Controller\Admin;
+
+use App\Entity\Reservation;
+use BcMath\Number;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+
+
+
+class ReservationCrudController extends AbstractCrudController
+{
+    public static function getEntityFqcn(): string
+    {
+        return Reservation::class;
+    }
+
+    
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            IdField::new('id'),
+            DateTimeField::new('dateReservation', 'Date de réservation'),  
+            DateTimeField::new('dateDebut', 'Date de début'),  
+            DateTimeField::new('dateFin', 'Date de fin'), 
+            Number::new('prixTotal', 'Prix total'),           
+        ];
+    }
+    
+}

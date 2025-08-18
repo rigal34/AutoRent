@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Categorie;
 use App\Entity\Vehicule;
 use App\Entity\Actualite;
-use App\Entity\Reservation;
 use App\Controller\Admin\CategorieCrudController;
 use App\Controller\Admin\VehiculeCrudController;
 
@@ -56,7 +55,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Véhicules', 'fa fa-car', Vehicule::class);
         yield MenuItem::section('Actualités'); 
         yield MenuItem::linkToCrud('Actualités', 'fa fa-newspaper', Actualite::class);
-        yield MenuItem::linkToCrud('Réservations', 'fa fa-calendar', Reservation::class); 
+         
 
     }
 }
