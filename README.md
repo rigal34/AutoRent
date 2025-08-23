@@ -248,3 +248,14 @@ Action : Ajout de la méthode __toString() dans les entités User et Vehicule.
 
 Points Clés Appris : Compréhension du rôle de l'AssociationField, qui a besoin d'une "étiquette" textuelle pour afficher les objets liés. La méthode __toString() fournit cette étiquette, transformant un menu déroulant technique en une liste de noms lisibles.
 
+* **Formulaire d'inscription complet :**
+    * Ajout des champs **"Nom"** et **"Prénom"** pour un enregistrement plus détaillé.
+    * Le formulaire est maintenant **100% fonctionnel** : les informations des nouveaux utilisateurs sont validées et correctement **sauvegardées en base de données**.
+
+* **Logique de redirection améliorée :**
+    * Après une **inscription réussie**, le nouvel utilisateur est automatiquement connecté et redirigé vers la page **"Notre Catalogue"** pour une expérience utilisateur fluide.
+    * Lorsqu'un **utilisateur déjà existant se connecte**, il est redirigé vers la **page d'accueil**.
+
+* **Déconnexion fonctionnelle :**
+    * Un bouton **"Se déconnecter"** est maintenant visible dans la barre de navigation pour tout utilisateur connecté, lui permettant de mettre fin à sa session de manière sécurisée.
+
