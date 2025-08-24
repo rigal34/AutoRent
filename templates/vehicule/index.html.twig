@@ -24,7 +24,7 @@
 						{% endif %}
 						<div class="card-body">
 							<h5 class="card-title">{{ vehicule.nom }}</h5>
-							<p class="card-text">{{ vehicule.description|slice(0, 80) ~ '...' }}</p>
+							<p class="card-text">{{ (vehicule.description|slice(0, 80) ~ '...') | raw }}</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<a href="{{ path('app_vehicule_show', {'id': vehicule.id}) }}" class="btn btn-primary">Voir détails</a>
 								<span class="text-muted fs-5">

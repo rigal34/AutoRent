@@ -4,25 +4,26 @@ Bonjour Bruno.
 📁 Structure du Projet
 AutoRent/
 ├── assets/
-│   └── ... (tes fichiers CSS et JS)
+│   └── ... (Fichiers sources CSS/JS)
 ├── bin/
 │   └── console
 ├── config/
-│   └── ... (tous les fichiers de configuration)
+│   └── ... (Fichiers de configuration)
 ├── migrations/
-│   └── ... (tes migrations de base de données)
+│   └── ... (Migrations de base de données)
 ├── public/
-│   └── index.php
+│   ├── build/
+│   ├── index.php
 │   └── images/
 ├── src/
 │   ├── Controller/
 │   │   ├── Admin/
-│   │   │   ├── ... (tes autres CrudControllers)
-│   │   │   └── ReservationCrudController.php  
+│   │   │   └── ReservationCrudController.php 
 │   │   ├── CategorieController.php
 │   │   ├── ContactController.php
 │   │   ├── HomeController.php
 │   │   ├── RegistrationController.php
+│   │   ├── ReservationController.php  
 │   │   ├── SecurityController.php
 │   │   └── VehiculeController.php
 │   ├── DataFixtures/
@@ -33,7 +34,8 @@ AutoRent/
 │   │   └── Vehicule.php
 │   ├── Form/
 │   │   ├── ContactFormType.php
-│   │   └── RegistrationFormType.php
+│   │   ├── RegistrationFormType.php
+│   │   └── ReservationFormType.php    
 │   ├── Repository/
 │   │   ├── CategorieRepository.php
 │   │   ├── ReservationRepository.php
@@ -53,6 +55,8 @@ AutoRent/
 │   │   └── navbar.html.twig
 │   ├── registration/
 │   │   └── register.html.twig
+│   ├── reservation/                 
+│   │   └── new.html.twig            
 │   ├── security/
 │   │   └── login.html.twig
 │   ├── vehicule/
@@ -258,4 +262,16 @@ Points Clés Appris : Compréhension du rôle de l'AssociationField, qui a besoi
 
 * **Déconnexion fonctionnelle :**
     * Un bouton **"Se déconnecter"** est maintenant visible dans la barre de navigation pour tout utilisateur connecté, lui permettant de mettre fin à sa session de manière sécurisée.
+
+    * **Route Sécurisée** : L'action de créer une nouvelle réservation (`/reservation/{id}`) est désormais protégée. Seuls les **utilisateurs authentifiés** (`ROLE_USER`) peuvent y accéder.
+
+* **Redirection Conditionnelle** :
+    * Un visiteur **non connecté** qui clique sur "Réserver" est automatiquement redirigé vers la **page de connexion** avec un message l'invitant à s'identifier.
+    * Un utilisateur **connecté** accède directement au **formulaire de réservation** pour le véhicule sélectionné.
+
+* **Formulaire de Réservation** : Un formulaire dédié est affiché, permettant aux utilisateurs de choisir leurs dates de début et de fin de location.
+
+* **Confirmation et Persistance des Données** :
+    * Après la soumission réussie du formulaire, un **message de succès** (flash message) s'affiche pour confirmer à l'utilisateur que sa demande a bien été prise en compte.
+    * La nouvelle réservation est **sauvegardée en base de données**, en l'associant au véhicule choisi et à l'utilisateur connecté.
 

@@ -25,7 +25,7 @@
 			<h2 class="mb-3">{{ vehicule.nom }}</h2>
 
 			{# affiche la description en texte clair #}
-			<p class="text-muted">{{ vehicule.description }}</p>
+			<p class="text-muted">{{ vehicule.description | raw }}</p>
 
 			{# je crée un bloc pour le prix pour le mettre en valeur #}
 			<div class="bg-light p-3 rounded my-4">
@@ -39,7 +39,7 @@
 			{# bouton pour la réservation #}
 			<div class="d-grid">
 
-				<a href="{{ path('app_vehicule_show', {'id': vehicule.id}) }}" class="btn btn-primary btn-lg">Réserver ce véhicule</a>
+				<a href="{{ path('app_reservation_new', {'id': vehicule.id}) }}" class="btn btn-primary btn-lg">Réserver ce véhicule</a>
 			</div>
 
 		</div>

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre reservation{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">Réserver le véhicule : {{ vehicule.nom }}</h1>
+            
+            {{ form_start(reservationForm) }}
+              
+                {{ form_row(reservationForm.dateReservation) }}
+                {{ form_row(reservationForm.dateDebut) }}
+                {{ form_row(reservationForm.dateFin) }}
+                
+                <button type="submit" class="btn btn-primary mt-3">Confirmer la réservation</button>
+            {{ form_end(reservationForm) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
