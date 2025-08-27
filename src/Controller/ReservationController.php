@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-use DateTimeImmutable; // ✅ Plus moderne
+use DateTimeImmutable; 
 use App\Entity\Vehicule;
 use App\Entity\Reservation;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,28 +21,43 @@ final class ReservationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+      
+        if (!$vehicule->isStatut()) {
+            $this->addFlash('error', 'Ce véhicule n\'est plus disponible.');
+            return $this->redirectToRoute('app_vehicule_show', ['id' => $vehicule->getId()]);
+        }
+
         $reservation = new Reservation();
         $form = $this->createForm(ReservationFormType::class, $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Associer l'utilisateur et le véhicule
+            
+            // Double vérification de disponibilité
+            if (!$vehicule->isStatut()) {
+                $this->addFlash('error', 'Ce véhicule a été réservé entre temps.');
+                return $this->redirectToRoute('app_vehicule_show', ['id' => $vehicule->getId()]);
+            }
+
+            // Créer la réservation
             $reservation->setUtilisateur($this->getUser());
             $reservation->setVehicule($vehicule);
-           $reservation->setDateReservation(new DateTimeImmutable()); 
-            
-            
+            $reservation->setDateReservation(new DateTimeImmutable()); 
             $reservation->setStatut('en_attente'); 
-            
+
             // Calculer le prix total
             $dateDebut = $reservation->getDateDebut();
             $dateFin = $reservation->getDateFin();
-            $nombreJours = $dateDebut->diff($dateFin)->days + 1;//pour eviter que l ordi compte que 1jour
+            $nombreJours = $dateDebut->diff($dateFin)->days + 1;
             $prixTotal = $nombreJours * $vehicule->getTarifJournalier();
             $reservation->setPrixTotal($prixTotal);
-            
-            // Sauvegarder
+
+            //  MARQUE LE VÉHICULE COMME INDISPONIBLE
+            $vehicule->setStatut(false); // false = indisponible
+
+            // Sauvegarder tout
             $entityManager->persist($reservation);
+            $entityManager->persist($vehicule); //  Important pour sauver le changement de statut !
             $entityManager->flush();
 
             $this->addFlash('success', 'Réservation confirmée ! Total: ' . $prixTotal . '€ pour ' . $nombreJours . ' jour(s)');
@@ -56,6 +71,5 @@ final class ReservationController extends AbstractController
     }
 }
 
-
-
+// claude
 

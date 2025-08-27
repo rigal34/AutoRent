@@ -212,7 +212,31 @@ class Vehicule
     }
 
 
-
+/**
+ * Récupère la prochaine date de disponibilité
+ */
+public function getProchaineDateDisponible(): ?\DateTimeInterface
+{
+    $dateLaPlusRecente = null;
+    
+    foreach ($this->reservations as $reservation) {
+        // Réservations en cours ou confirmées
+        if (in_array($reservation->getStatut(), ['en_attente', 'confirme'])) {
+            $dateFin = $reservation->getDateFin();
+            if ($dateLaPlusRecente === null || $dateFin > $dateLaPlusRecente) {
+                $dateLaPlusRecente = $dateFin;
+            }
+        }
+    }
+    
+    // Retourne le lendemain de la fin de réservation
+    if ($dateLaPlusRecente) {
+        return $dateLaPlusRecente->add(new \DateInterval('P1D'));
+    }
+    
+    return null;
+}
 
 
 }
+// claude1
