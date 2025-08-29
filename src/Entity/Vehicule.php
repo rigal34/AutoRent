@@ -213,16 +213,19 @@ class Vehicule
 
 
 /**
- * Récupère la prochaine date de disponibilité
+ * Récupère la prochaine date de disponibilité du véhicule
  */
 public function getProchaineDateDisponible(): ?\DateTimeInterface
 {
-    $dateLaPlusRecente = null;
+    $dateLaPlusRecente = null;//je reinitialise la variable zero/rien
     
     foreach ($this->reservations as $reservation) {
-        // Réservations en cours ou confirmées
+        // dans la fonction je recupere son statut si il est en_attente ou confirme j'execute le code en dessous
         if (in_array($reservation->getStatut(), ['en_attente', 'confirme'])) {
+
+            //JE RECUPERE LA DATE DE FIN DE CHAQUE RESERVATION POUR LA STOCKER DANS $dateFin
             $dateFin = $reservation->getDateFin();
+            //SI J AI aucune date ou si la date de fin est plus recent que celle que j ai deja je la stocke dans $dateLaPlusRecente comme nouvelle date la plus recente
             if ($dateLaPlusRecente === null || $dateFin > $dateLaPlusRecente) {
                 $dateLaPlusRecente = $dateFin;
             }
@@ -239,4 +242,3 @@ public function getProchaineDateDisponible(): ?\DateTimeInterface
 
 
 }
-// claude1

@@ -55,9 +55,9 @@ final class ReservationController extends AbstractController
             //  MARQUE LE VÉHICULE COMME INDISPONIBLE
             $vehicule->setStatut(false); // false = indisponible
 
-            // Sauvegarder tout
+            // Sauvegarder tout en attentant la confirmation admin
             $entityManager->persist($reservation);
-            $entityManager->persist($vehicule); //  Important pour sauver le changement de statut !
+            $entityManager->persist($vehicule);
             $entityManager->flush();
 
             $this->addFlash('success', 'Réservation confirmée ! Total: ' . $prixTotal . '€ pour ' . $nombreJours . ' jour(s)');
@@ -71,5 +71,5 @@ final class ReservationController extends AbstractController
     }
 }
 
-// claude
+
 

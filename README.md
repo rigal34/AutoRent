@@ -1,70 +1,97 @@
 Bonjour Bruno.
 
 
-📁 Structure du Projet
 AutoRent/
 ├── assets/
-│   └── ... (Fichiers sources CSS/JS)
+│   ├── styles/
+│   │   └── app.css
+│   └── scripts/
+│       └── app.js
 ├── bin/
 │   └── console
 ├── config/
-│   └── ... (Fichiers de configuration)
+│   ├── packages/
+│   ├── routes/
+│   └── services.yaml
 ├── migrations/
-│   └── ... (Migrations de base de données)
+│   ├── Version20250125000001.php (Structure initiale)
+│   ├── Version20250126000002.php (Entités User/Vehicule)
+│   └── Version20250127000003.php (Système réservation)
 ├── public/
 │   ├── build/
-│   ├── index.php
-│   └── images/
+│   │   ├── app.css
+│   │   └── app.js
+│   ├── images/
+│   │   └── vehicules/
+│   └── index.php
 ├── src/
 │   ├── Controller/
 │   │   ├── Admin/
-│   │   │   └── ReservationCrudController.php 
+│   │   │   └── ReservationCrudController.php
 │   │   ├── CategorieController.php
 │   │   ├── ContactController.php
 │   │   ├── HomeController.php
 │   │   ├── RegistrationController.php
-│   │   ├── ReservationController.php  
+│   │   ├── ReservationController.php        ⭐ [MODIFIÉ - Gestion disponibilité]
 │   │   ├── SecurityController.php
 │   │   └── VehiculeController.php
 │   ├── DataFixtures/
+│   │   ├── UserFixtures.php
+│   │   ├── CategorieFixtures.php
+│   │   └── VehiculeFixtures.php
 │   ├── Entity/
 │   │   ├── Categorie.php
 │   │   ├── Reservation.php
 │   │   ├── User.php
-│   │   └── Vehicule.php
+│   │   └── Vehicule.php                     ⭐ [MODIFIÉ - Méthode getProchaineDateDisponible()]
 │   ├── Form/
 │   │   ├── ContactFormType.php
 │   │   ├── RegistrationFormType.php
-│   │   └── ReservationFormType.php    
+│   │   └── ReservationFormType.php
 │   ├── Repository/
 │   │   ├── CategorieRepository.php
-│   │   ├── ReservationRepository.php
+│   │   ├── ReservationRepository.php        💡 [Requêtes métier disponibilité]
 │   │   ├── UserRepository.php
 │   │   └── VehiculeRepository.php
 │   └── Security/
-│       └── ... (CustomAuthenticator.php, etc.)
+│       ├── CustomAuthenticator.php
+│       └── Voter/
 ├── templates/
+│   ├── base.html.twig                       🎨 [Layout principal]
+│   ├── partials/
+│   │   ├── navbar.html.twig
+│   │   └── footer.html.twig
+│   ├── home/
+│   │   └── index.html.twig                  🏠 [Page d'accueil]
 │   ├── categorie/
 │   │   └── show.html.twig
-│   ├── contact/
-│   │   └── index.html.twig
-│   ├── home/
-│   │   └── index.html.twig
-│   ├── partials/
-│   │   ├── footer.html.twig
-│   │   └── navbar.html.twig
-│   ├── registration/
-│   │   └── register.html.twig
-│   ├── reservation/                 
-│   │   └── new.html.twig            
+│   ├── vehicule/
+│   │   ├── index.html.twig                  🚗 [Liste véhicules]
+│   │   └── show.html.twig                   ⭐ [MODIFIÉ - Affichage date disponibilité]
+│   ├── reservation/
+│   │   ├── new.html.twig                    📝 [Formulaire réservation]
+│   │   └── confirmation.html.twig           ✅ [Page confirmation]
 │   ├── security/
 │   │   └── login.html.twig
-│   ├── vehicule/
-│   │   ├── index.html.twig
-│   │   └── show.html.twig
-│   └── base.html.twig
+│   ├── registration/
+│   │   └── register.html.twig
+│   └── contact/
+│       └── index.html.twig
+├── tests/
+│   ├── Controller/
+│   └── Entity/
+├── translations/
 ├── var/
-└── vendor/
+│   ├── cache/
+│   ├── log/
+│   └── sessions/
+├── vendor/
+├── .env                                     ⚙️ [Configuration environnement]
+├── .gitignore
+├── composer.json
+├── package.json
+├── webpack.config.js
+└── README.md                               
 Démarrage et Fondations du Projet
 Ce projet a été initialisé avec Symfony 6.4, en utilisant la structure --webapp pour inclure tous les outils nécessaires au développement d'une application web moderne.
 
@@ -275,3 +302,22 @@ Points Clés Appris : Compréhension du rôle de l'AssociationField, qui a besoi
     * Après la soumission réussie du formulaire, un **message de succès** (flash message) s'affiche pour confirmer à l'utilisateur que sa demande a bien été prise en compte.
     * La nouvelle réservation est **sauvegardée en base de données**, en l'associant au véhicule choisi et à l'utilisateur connecté.
 
+## 🚀 **Mise à jour : Affichage Date de Disponibilité** (27/01/2025)
+
+### ✨ **Nouvelles fonctionnalités :**
+- **Affichage intelligent de la disponibilité** : Quand un véhicule est indisponible, l'utilisateur voit maintenant la prochaine date de disponibilité
+- **Calcul automatique** : Le système trouve automatiquement quand le véhicule sera libre après les réservations actuelles
+
+### 🔧 **Améliorations techniques :**
+- **Nouvelle méthode `getProchaineDateDisponible()`** dans l'entité Vehicule
+- **Logique métier** : Parcours des réservations actives (`en_attente`, `confirme`)
+- **Calcul intelligent** : Trouve la date de fin la plus récente + 1 jour
+- **Interface utilisateur** : Message clair "Véhicule disponible dès le [DATE]"
+
+### 📁 **Fichiers modifiés :**
+### 🎯 **Impact utilisateur :**
+- ✅ **Expérience améliorée** : Plus de frustration avec "indisponible"
+- ✅ **Information claire** : L'utilisateur sait quand revenir
+- ✅ **Aspect professionnel** : Application web moderne et complète
+
+---

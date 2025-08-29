@@ -43,9 +43,13 @@
 
                 <!-- Boutons positionnement de mes boutons à droite -->
                 <div class="btn-container d-flex">
-                    <a href="{{ path('app_login') }}" class="btn btn-dark">Connexion</a>
+                {# si l'utilisateur est connecté vient de symfony #}
+                {% if app.user %}
                     <a href="{{ path('app_logout') }}" class="btn btn-dark">Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="btn btn-dark">Connexion</a>
                     <a href="{{ path('app_register') }}" class="btn btn-dark">S'inscrire</a>
+                {% endif %}
                 </div>
             </div>
         </div>
