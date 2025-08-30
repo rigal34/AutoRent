@@ -1,4 +1,4 @@
-Bonjour Bruno.
+
 
 
 AutoRent/
@@ -34,7 +34,7 @@ AutoRent/
 │   │   ├── RegistrationController.php
 │   │   ├── ReservationController.php        ⭐ [MODIFIÉ - Gestion disponibilité]
 │   │   ├── SecurityController.php
-│   │   └── VehiculeController.php
+│   │   └── VehiculeController.php           🆕 [MODIFIÉ - Ajout méthode list() pour recherche]
 │   ├── DataFixtures/
 │   │   ├── UserFixtures.php
 │   │   ├── CategorieFixtures.php
@@ -47,12 +47,13 @@ AutoRent/
 │   ├── Form/
 │   │   ├── ContactFormType.php
 │   │   ├── RegistrationFormType.php
-│   │   └── ReservationFormType.php
+│   │   ├── ReservationFormType.php          🔧 [MODIFIÉ - Améliorations formulaire]
+│   │   └── VehiculeSearchType.php           🆕 [NOUVEAU - Formulaire de recherche]
 │   ├── Repository/
 │   │   ├── CategorieRepository.php
 │   │   ├── ReservationRepository.php        💡 [Requêtes métier disponibilité]
 │   │   ├── UserRepository.php
-│   │   └── VehiculeRepository.php
+│   │   └── VehiculeRepository.php           🆕 [MODIFIÉ - Ajout méthode findByFilters()]
 │   └── Security/
 │       ├── CustomAuthenticator.php
 │       └── Voter/
@@ -67,7 +68,8 @@ AutoRent/
 │   │   └── show.html.twig
 │   ├── vehicule/
 │   │   ├── index.html.twig                  🚗 [Liste véhicules]
-│   │   └── show.html.twig                   ⭐ [MODIFIÉ - Affichage date disponibilité]
+│   │   ├── show.html.twig                   ⭐ [MODIFIÉ - Affichage date disponibilité]
+│   │   └── list.html.twig                   🆕 [NOUVEAU - Page de recherche avec résultats]
 │   ├── reservation/
 │   │   ├── new.html.twig                    📝 [Formulaire réservation]
 │   │   └── confirmation.html.twig           ✅ [Page confirmation]
@@ -86,12 +88,12 @@ AutoRent/
 │   ├── log/
 │   └── sessions/
 ├── vendor/
-├── .env                                     ⚙️ [Configuration environnement]
+├── .env                                    
 ├── .gitignore
 ├── composer.json
 ├── package.json
 ├── webpack.config.js
-└── README.md                               
+└── README.md                
 Démarrage et Fondations du Projet
 Ce projet a été initialisé avec Symfony 6.4, en utilisant la structure --webapp pour inclure tous les outils nécessaires au développement d'une application web moderne.
 
@@ -321,3 +323,21 @@ Points Clés Appris : Compréhension du rôle de l'AssociationField, qui a besoi
 - ✅ **Aspect professionnel** : Application web moderne et complète
 
 ---
+🔍 Système de Recherche de Véhicules
+📋 Fonctionnalités implémentées :
+
+✅ Recherche par nom/modèle de véhicule
+✅ Filtrage par marque (liste déroulante)
+✅ Filtrage par prix minimum et prix maximum
+✅ Affichage des résultats en temps réel
+✅ Interface responsive avec Bootstrap
+🛠️ Fichiers créés/modifiés :
+Nouveaux fichiers :
+
+src/Form/VehiculeSearchType.php - Formulaire de recherche
+templates/vehicule/list.html.twig - Template d'affichage des résultats
+
+Fichiers modifiés :
+
+src/Controller/VehiculeController.php - Ajout de la méthode list() pour gérer la recherche
+src/Form/ReservationFormType.php - Améliorations du formulaire de réservation

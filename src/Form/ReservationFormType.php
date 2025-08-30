@@ -19,7 +19,7 @@ class ReservationFormType extends AbstractType
             ])
             ->add('dateDebut', DateTimeType::class, [
                 'label' => 'Date de début',
-                'widget' => 'single_text',
+                'widget' => 'single_text',// Widget pour le champ de date et heure
             ])
             ->add('dateFin', DateTimeType::class, [
                 'label' => 'Date de fin',

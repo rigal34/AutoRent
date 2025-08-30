@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des véhicules{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Recherche de véhicules</h1>
+
+        {# ✅ FORMULAIRE AVEC TOUS LES CHAMPS #}
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.recherche) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.marque) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.prixMin) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.prixMax) }}
+            </div>
+        </div>
+       
+        {{ form_end(form) }}
+
+        {# ✅ RÉSULTATS APRÈS LE FORMULAIRE #}
+        <hr style="margin: 30px 0;">
+        <div id="resultats">
+            {% if vehicules|length > 0 %}
+                <h2>✅ Véhicules trouvés ({{ vehicules|length }}) :</h2>
+                {% for vehicule in vehicules %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ vehicule.nom }}</h5>
+                            <p class="card-text">
+                                <strong>Prix :</strong> {{ vehicule.tarifJournalier }}€/jour<br>
+                                <strong>Marque :</strong> {{ vehicule.marque ?? 'Non définie' }}
+                            </p>
+                            <a href="{{ path('app_vehicule_show', {'id': vehicule.id}) }}" class="btn btn-info btn-sm">Voir détails</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">
+                    <h4>ℹ️ Aucun résultat</h4>
+                    <p>Aucun véhicule ne correspond à vos critères de recherche.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
