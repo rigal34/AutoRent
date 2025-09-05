@@ -1,0 +1,97 @@
+/* ========================================
+   STYLES POUR LA PAGE LISTE VÉHICULES
+   ======================================== */
+
+/* toutes les propriétés changées en 0.3s en mode douceur  */
+.vehicle-card {
+    transition: all 0.3s ease;
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* Ombre légère avec effet de levée monte de 5px */
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+} 
+
+/* Contenu des cards et permet de s'agrandir de s'adapter
+flexibilité  */
+.vehicle-details {
+    min-height: 80px;
+}
+
+
+/* Je joue sur toute les bordures avec la correspondance de l enfant */
+.detail-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+/* Dernier élément de détail pour faire disparaître la bordure
+du bas */
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.card-title {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+/* Boutons
+tout ce qui est transition pour les boutons se fait ici en mode douceur */
+
+.btn-primary {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+/* Effet de levée monte de 1px a la survol */
+.btn-primary:hover {
+    transform: translateY(-1px);
+}
+
+
+
+/* Responsive améliorations */
+@media (max-width: 768px) {
+    .vehicle-card {
+        margin-bottom: 20px;
+    }
+    
+    .card-title {
+        min-height: auto;
+        font-size: 1.1rem;
+    }
+    
+    .vehicle-details {
+        min-height: auto;
+    }
+}
+
+/* Animation d'entrée effet d'apparition des cards au moment du chargement de la page */
+.vehicle-card {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Délai d'animation pour chaque card */
+.vehicle-card:nth-child(1) { animation-delay: 0.1s; }
+.vehicle-card:nth-child(2) { animation-delay: 0.2s; }
+.vehicle-card:nth-child(3) { animation-delay: 0.3s; }
+.vehicle-card:nth-child(4) { animation-delay: 0.4s; }
+.vehicle-card:nth-child(5) { animation-delay: 0.5s; }
+.vehicle-card:nth-child(6) { animation-delay: 0.6s; }

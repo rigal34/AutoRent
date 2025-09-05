@@ -16,18 +16,20 @@ final class VehiculeController extends AbstractController
     public function vehicule(VehiculeRepository $vehiculeRepository, Request $request): Response
     {
         $form = $this->createForm(VehiculeSearchType::class);
-        $form->handleRequest($request);
+        $form->handleRequest($request);//Je traite la requete
 
         $vehicules = $vehiculeRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-
-            $vehicules = array_filter($vehicules, function(Vehicule $vehicule) use ($data) {
+            $data = $form->getData();//je recupere les données du formulaire un tableau associatif
+           //j evite de creer une boucle for each pour filtrer les vehicules cela me fait moins de code
+            $vehicules = array_filter($vehicules, function(Vehicule $vehicule) use ($data) {//j importe les données du formulaire
                 $match = true;
 
+                //si le champ recherche n est pas vide
                 if (!empty($data['marque'])) {
-                    $match = $match && stripos($vehicule->getNom(), $data['marque']) !== false;
+                    //stripos Cherche les chaines de caracterers.
+                    $match = $match && stripos($vehicule->getNom(), $data['marque']) !== false; // inververse la logique de la recherche
                 }
 
                 return $match;

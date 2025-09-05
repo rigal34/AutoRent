@@ -48,7 +48,7 @@ final class ReservationController extends AbstractController
             // Calculer le prix total
             $dateDebut = $reservation->getDateDebut();
             $dateFin = $reservation->getDateFin();
-            $nombreJours = $dateDebut->diff($dateFin)->days + 1;
+            $nombreJours = $dateDebut->diff($dateFin)->days + 1;//pour eviter de perdre un jour
             $prixTotal = $nombreJours * $vehicule->getTarifJournalier();
             $reservation->setPrixTotal($prixTotal);
 

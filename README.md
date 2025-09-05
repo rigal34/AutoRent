@@ -14,13 +14,15 @@ AutoRent/
 │   ├── routes/
 │   └── services.yaml
 ├── migrations/
-│   ├── Version20250125000001.php (Structure initiale)
-│   ├── Version20250126000002.php (Entités User/Vehicule)
-│   └── Version20250127000003.php (Système réservation)
+│   ├── Version20250125000001.php        # Structure initiale
+│   ├── Version20250126000002.php        # Entités User/Vehicule
+│   └── Version20250127000003.php        # Système réservation
 ├── public/
 │   ├── build/
 │   │   ├── app.css
 │   │   └── app.js
+│   ├── css/                             # 🆕 NOUVEAU DOSSIER
+│   │   └── vehicules-list.css           # 🎨 Styles modernes page véhicules
 │   ├── images/
 │   │   └── vehicules/
 │   └── index.php
@@ -32,9 +34,9 @@ AutoRent/
 │   │   ├── ContactController.php
 │   │   ├── HomeController.php
 │   │   ├── RegistrationController.php
-│   │   ├── ReservationController.php        ⭐ [MODIFIÉ - Gestion disponibilité]
+│   │   ├── ReservationController.php    # ⭐ MODIFIÉ - Gestion disponibilité
 │   │   ├── SecurityController.php
-│   │   └── VehiculeController.php           🆕 [MODIFIÉ - Ajout méthode list() pour recherche]
+│   │   └── VehiculeController.php       # 🆕 MODIFIÉ - Méthode list() recherche
 │   ├── DataFixtures/
 │   │   ├── UserFixtures.php
 │   │   ├── CategorieFixtures.php
@@ -43,57 +45,62 @@ AutoRent/
 │   │   ├── Categorie.php
 │   │   ├── Reservation.php
 │   │   ├── User.php
-│   │   └── Vehicule.php                     ⭐ [MODIFIÉ - Méthode getProchaineDateDisponible()]
+│   │   └── Vehicule.php                 # ⭐ MODIFIÉ - getProchaineDateDisponible()
 │   ├── Form/
 │   │   ├── ContactFormType.php
 │   │   ├── RegistrationFormType.php
-│   │   ├── ReservationFormType.php          🔧 [MODIFIÉ - Améliorations formulaire]
-│   │   └── VehiculeSearchType.php           🆕 [NOUVEAU - Formulaire de recherche]
+│   │   ├── ReservationFormType.php      # 🔧 MODIFIÉ - Améliorations
+│   │   └── VehiculeSearchType.php       # 🆕 NOUVEAU - Formulaire recherche
 │   ├── Repository/
 │   │   ├── CategorieRepository.php
-│   │   ├── ReservationRepository.php        💡 [Requêtes métier disponibilité]
-│   │   ├── UserRepository.php
-│   │   └── VehiculeRepository.php           🆕 [MODIFIÉ - Ajout méthode findByFilters()]
+│   │   ├── ReservationRepository.php│   │   ├── UserRepository.php
+│   │   └── VehicleRepository.php        # 🆕 MODIFIÉ - findByFilters()
 │   └── Security/
 │       ├── CustomAuthenticator.php
 │       └── Voter/
 ├── templates/
-│   ├── base.html.twig                       🎨 [Layout principal]
+│   ├── base.html.twig                   # 🎨 Layout principal
 │   ├── partials/
 │   │   ├── navbar.html.twig
 │   │   └── footer.html.twig
 │   ├── home/
-│   │   └── index.html.twig                  🏠 [Page d'accueil]
+│   │   └── index.html.twig              # 🏠 Page d'accueil
 │   ├── categorie/
 │   │   └── show.html.twig
 │   ├── vehicule/
-│   │   ├── index.html.twig                  🚗 [Liste véhicules]
-│   │   ├── show.html.twig                   ⭐ [MODIFIÉ - Affichage date disponibilité]
-│   │   └── list.html.twig                   🆕 [NOUVEAU - Page de recherche avec résultats]
+│   │   ├── index.html.twig              # 🚗 Liste véhicules
+│   │   ├── show.html.twig               # ⭐ MODIFIÉ - Date disponibilité
+│   │   └── list.html.twig               # 🆕 NOUVEAU - Recherche + résultats
 │   ├── reservation/
-│   │   ├── new.html.twig                    📝 [Formulaire réservation]
-│   │   └── confirmation.html.twig           ✅ [Page confirmation]
+│   │   ├── new.html.twig                # 📝 Formulaire réservation
+│   │   └── confirmation.html.twig       # ✅ Confirmation
 │   ├── security/
 │   │   └── login.html.twig
 │   ├── registration/
 │   │   └── register.html.twig
 │   └── contact/
 │       └── index.html.twig
-├── tests/
+├── tests/                               # 🧪 TESTS COMPLETS
+│   ├── Functional/                      # 🆕 NOUVEAU
+│   │   └── VehiculeControllerTest.php   # 🧪 Tests end-to-end
+│   ├── Unit/                            # 🆕 NOUVEAU
+│   │   ├── CategorieControllerTest.php  # 🧪 Tests unitaires
+│   │   ├── ContactControllerTest.php
+│   │   ├── HomeControllerTest.php
+│   │   ├── RegistrationControllerTest.php
+│   │   ├── ReservationControllerTest.php
+│   │   ├── SecurityControllerTest.php
+│   │   └── VehiculeControllerTest.php
 │   ├── Controller/
 │   └── Entity/
 ├── translations/
 ├── var/
-│   ├── cache/
-│   ├── log/
-│   └── sessions/
 ├── vendor/
-├── .env                                    
-├── .gitignore
+├── .env├── .gitignore
 ├── composer.json
 ├── package.json
 ├── webpack.config.js
-└── README.md                
+└── README.md               
 Démarrage et Fondations du Projet
 Ce projet a été initialisé avec Symfony 6.4, en utilisant la structure --webapp pour inclure tous les outils nécessaires au développement d'une application web moderne.
 
@@ -341,3 +348,30 @@ Fichiers modifiés :
 
 src/Controller/VehiculeController.php - Ajout de la méthode list() pour gérer la recherche
 src/Form/ReservationFormType.php - Améliorations du formulaire de réservation
+
+### Version 1.3.0 - Tests & Interface Moderne
+**Date :** [Date du jour]
+
+#### ✨ Nouvelles Fonctionnalités
+- **Tests Unitaires** : Implémentation des tests pour la logique métier
+- **Tests Fonctionnels** : Tests end-to-end pour les parcours utilisateur
+- **Interface Modernisée** : Refonte visuelle de la page véhicules
+
+#### 📁 Structure CSS Reorganisée
+#### 🎨 Améliorations Visuelles
+- **Cards Véhicules** : Design moderne avec ombres et bordures arrondies
+- **Animations d'Entrée** : Effet `fadeInUp` au chargement des cards
+- **Responsive Design** : Adaptation optimale sur tous écrans
+- **Filtres Visuels** : Interface de recherche améliorée
+- **États Interactifs** : Hover effects et transitions fluides
+
+#### 🧪 Tests Implémentés
+- **Tests Unitaires** : Validation des entités et services
+- **Tests Fonctionnels** : Parcours de recherche de véhicules
+- **Couverture** : [X]% des fonctionnalités critiques
+
+---
+
+## 🎨 Aperçu des Améliorations Visuelles
+
+### Page Véhicules Avant/Après
