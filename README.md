@@ -11,6 +11,8 @@ AutoRent/
 │   └── console
 ├── config/
 │   ├── packages/
+│   │   ├── mailer.yaml                  # 🆕 NOUVEAU - Config email
+│   │   └── twig.yaml
 │   ├── routes/
 │   └── services.yaml
 ├── migrations/
@@ -21,7 +23,7 @@ AutoRent/
 │   ├── build/
 │   │   ├── app.css
 │   │   └── app.js
-│   ├── css/                             # 🆕 NOUVEAU DOSSIER
+│   ├── css/                             # 🎨 STYLES PERSONNALISÉS
 │   │   └── vehicules-list.css           # 🎨 Styles modernes page véhicules
 │   ├── images/
 │   │   └── vehicules/
@@ -34,35 +36,41 @@ AutoRent/
 │   │   ├── ContactController.php
 │   │   ├── HomeController.php
 │   │   ├── RegistrationController.php
-│   │   ├── ReservationController.php    # ⭐ MODIFIÉ - Gestion disponibilité
+│   │   ├── ReservationController.php    # ⭐ MODIFIÉ - Notifications email
 │   │   ├── SecurityController.php
-│   │   └── VehiculeController.php       # 🆕 MODIFIÉ - Méthode list() recherche
+│   │   └── VehiculeController.php       # 🔧 MODIFIÉ - Méthode list() recherche
 │   ├── DataFixtures/
 │   │   ├── UserFixtures.php
 │   │   ├── CategorieFixtures.php
 │   │   └── VehiculeFixtures.php
 │   ├── Entity/
 │   │   ├── Categorie.php
-│   │   ├── Reservation.php
-│   │   ├── User.php
+│   │   ├── Reservation.php              # ⭐ MODIFIÉ - Propriétés complètes
+│   │   ├── User.php                     # 🔧 MODIFIÉ - UserIdentifier email
 │   │   └── Vehicule.php                 # ⭐ MODIFIÉ - getProchaineDateDisponible()
 │   ├── Form/
 │   │   ├── ContactFormType.php
 │   │   ├── RegistrationFormType.php
-│   │   ├── ReservationFormType.php      # 🔧 MODIFIÉ - Améliorations
+│   │   ├── ReservationFormType.php      # 🔧 MODIFIÉ - Validation dates
 │   │   └── VehiculeSearchType.php       # 🆕 NOUVEAU - Formulaire recherche
 │   ├── Repository/
 │   │   ├── CategorieRepository.php
-│   │   ├── ReservationRepository.php│   │   ├── UserRepository.php
-│   │   └── VehicleRepository.php        # 🆕 MODIFIÉ - findByFilters()
-│   └── Security/
-│       ├── CustomAuthenticator.php
-│       └── Voter/
+│   │   ├── ReservationRepository.php    # 🔧 MODIFIÉ - Méthodes disponibilité
+│   │   ├── UserRepository.php
+│   │   └── VehiculeRepository.php       # 🆕 MODIFIÉ - findByFilters()
+│   ├── Security/
+│   │   ├── CustomAuthenticator.php
+│   │   └── Voter/
+│   └── Service/                         # 🆕 NOUVEAU DOSSIER
+│       └── NotificationService.php      # ⭐ NOUVEAU - Service email
 ├── templates/
 │   ├── base.html.twig                   # 🎨 Layout principal
 │   ├── partials/
 │   │   ├── navbar.html.twig
 │   │   └── footer.html.twig
+│   ├── emails/                          # 🆕 NOUVEAU DOSSIER
+│   │   ├── admin_notification.html.twig # 📧 Email admin
+│   │   └── user_confirmation.html.twig  # 📧 Email client
 │   ├── home/
 │   │   └── index.html.twig              # 🏠 Page d'accueil
 │   ├── categorie/
@@ -72,35 +80,40 @@ AutoRent/
 │   │   ├── show.html.twig               # ⭐ MODIFIÉ - Date disponibilité
 │   │   └── list.html.twig               # 🆕 NOUVEAU - Recherche + résultats
 │   ├── reservation/
-│   │   ├── new.html.twig                # 📝 Formulaire réservation
-│   │   └── confirmation.html.twig       # ✅ Confirmation
+│   │   ├── index.html.twig              # 🆕 NOUVEAU - Formulaire réservation
+│   │   └── confirmation.html.twig       # ✅ Page confirmation
 │   ├── security/
 │   │   └── login.html.twig
 │   ├── registration/
 │   │   └── register.html.twig
 │   └── contact/
 │       └── index.html.twig
-├── tests/                               # 🧪 TESTS COMPLETS
-│   ├── Functional/                      # 🆕 NOUVEAU
-│   │   └── VehiculeControllerTest.php   # 🧪 Tests end-to-end
-│   ├── Unit/                            # 🆕 NOUVEAU
-│   │   ├── CategorieControllerTest.php  # 🧪 Tests unitaires
+├── tests/                               # 🧪 SUITE DE TESTS
+│   ├── Functional/                      # 🆕 TESTS FONCTIONNELS
+│   │   ├── VehiculeControllerTest.php   # 🧪 Tests end-to-end
+│   │   └── ReservationFlowTest.php      # 🆕 Test complet réservation
+│   ├── Unit/                            # 🧪 TESTS UNITAIRES
+│   │   ├── CategorieControllerTest.php
 │   │   ├── ContactControllerTest.php
 │   │   ├── HomeControllerTest.php
 │   │   ├── RegistrationControllerTest.php
 │   │   ├── ReservationControllerTest.php
 │   │   ├── SecurityControllerTest.php
-│   │   └── VehiculeControllerTest.php
+│   │   ├── VehiculeControllerTest.php
+│   │   └── NotificationServiceTest.php  # 🆕 Test service email
 │   ├── Controller/
 │   └── Entity/
-├── translations/
-├── var/
-├── vendor/
-├── .env├── .gitignore
-├── composer.json
-├── package.json
-├── webpack.config.js
-└── README.md               
+├── translations/                        # 🌐 INTERNATIONALISATION
+├── var/                                # 📝 LOGS & CACHE
+├── vendor/                             # 📦 DÉPENDANCES
+├── .env                                # 🔐 VARIABLES ENVIRONNEMENT
+├── .env.local                          # 🆕 CONFIG LOCALE (non versionné)
+├── .gitignore
+├── composer.json                       # 🎼 DÉPENDANCES PHP
+├── package.json                        # 📦 DÉPENDANCES JS
+├── webpack.config.js                   # ⚙️ BUILD ASSETS
+├── phpunit.xml.dist                    # 🆕 CONFIGURATION TESTS
+└── README.md                           # 📖 DOCUMENTATION
 Démarrage et Fondations du Projet
 Ce projet a été initialisé avec Symfony 6.4, en utilisant la structure --webapp pour inclure tous les outils nécessaires au développement d'une application web moderne.
 
@@ -375,3 +388,55 @@ src/Form/ReservationFormType.php - Améliorations du formulaire de réservation
 ## 🎨 Aperçu des Améliorations Visuelles
 
 ### Page Véhicules Avant/Après
+1️⃣ SERVICE DÉDIÉ :
+📁 src/Service/NotificationService.php
+
+Responsabilité : Gestion centralisée des notifications email
+Injection de dépendances : MailerInterface + Twig
+Méthode principale : sendReservationNotifications()
+
+2️⃣ TEMPLATES EMAIL :
+📁 templates/emails/
+  ├── 📄 admin_notification.html.twig    # Email pour l'admin
+  └── 📄 user_confirmation.html.twig     # Email pour le client
+3️⃣ INTÉGRATION CONTRÔLEUR :
+📁 src/Controller/ReservationController.php
+
+Injection automatique du NotificationService
+Appel après persist/flush pour garantir la cohérence
+
+
+⚙️ FONCTIONNEMENT :
+📩 EMAIL ADMINISTRATEUR :
+
+Expéditeur : rigalbruno2@gmail.com
+Destinataire : rigalbruno2@gmail.com
+Objet : "Nouvelle réservation véhicule #{ID}"
+Contenu : Détails complets de la réservation
+
+📩 EMAIL CLIENT :
+
+Expéditeur : rigalbruno2@gmail.com  
+Destinataire : Email dynamique du client connecté
+Objet : "⏳ Réservation en attente d'approbation"
+Contenu : Confirmation avec détails personnalisés
+
+
+💡 DONNÉES TRANSMISES :
+
+✅ Informations réservation complètes
+✅ Détails véhicule (marque, modèle, etc.)
+✅ Données utilisateur  
+✅ Prix total calculé
+✅ Statut "en_attente"
+
+
+🚀 AVANTAGES :
+
+Double notification (admin + client)
+Templates séparés pour personnalisation
+Service réutilisable pour d'autres notifications
+Injection Symfony automatique
+
+
+👨‍💼 SYSTÈME PROFESSIONNEL ET SCALABLE ! 💪📬

@@ -1,0 +1,33 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <h2 style="color: #dc3545;">🚨 Nouvelle Réservation en Attente</h2>
+    
+    <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <h3>👤 Informations Client:</h3>
+        <p><strong>Nom:</strong> {{ reservation.utilisateur.nom }} {{ reservation.utilisateur.prenom }}</p>
+        <p><strong>Email:</strong> {{ reservation.utilisateur.email }}</p>
+        <p><strong>Téléphone:</strong> {{ reservation.utilisateur.telephone|default('Non renseigné') }}</p>
+    </div>
+    
+   
+<div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0;">
+    <h3>🚗 Véhicule Réservé:</h3>
+    <p><strong>Véhicule:</strong> {{ reservation.vehicule.nom }}</p>
+    <p><strong>Motorisation:</strong> {{ reservation.vehicule.motorisation }}</p>
+    <p><strong>Prix/jour:</strong> {{ reservation.vehicule.tarifJournalier }}€</p>
+</div>
+    
+    <div style="background: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <h3>📅 Détails Réservation:</h3>
+        <p><strong>Période:</strong> du {{ reservation.dateDebut|date('d/m/Y') }} au {{ reservation.dateFin|date('d/m/Y') }}</p>
+        <p><strong>Durée:</strong> {{ reservation.dateDebut.diff(reservation.dateFin).days }} jour(s)</p>
+        <p><strong>Prix Total:</strong> <span style="color: #28a745; font-size: 18px; font-weight: bold;">{{ reservation.prixTotal }}€</span></p>
+        <p><strong>Statut:</strong> <span style="background: #ffc107; padding: 5px 10px; border-radius: 3px;">{{ reservation.statut }}</span></p>
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <p style="margin: 0;"><strong>💡 Action requise:</strong> Connectez-vous à l'administration pour valider cette réservation.</p>
+    </div>
+    
+    <hr>
+    <p style="color: #666; font-size: 12px;">📧 Email automatique envoyé le {{ "now"|date('d/m/Y à H:i') }}</p>
+</div>

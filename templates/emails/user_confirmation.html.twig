@@ -1,0 +1,46 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <h2 style="color: #28a745;">✅ Réservation Confirmée</h2>
+    
+    <p>Bonjour <strong>{{ reservation.utilisateur.prenom }}</strong>,</p>
+    
+    <p style="font-size: 16px;">🎉 <strong>Bravo !</strong> Votre réservation a été prise en compte et soumise à l'administrateur pour validation.</p>
+    
+    <div style="background: #e7f3ff; border-left: 4px solid #007bff; padding: 15px; margin: 20px 0;">
+        <h3 style="margin-top: 0;">📋 Récapitulatif de votre réservation</h3>
+        
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #dee2e6;">{{ reservation.vehicule.nom }} ({{ reservation.vehicule.motorisation }})</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #dee2e6;"><strong>📅 Début:</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #dee2e6;">{{ reservation.dateDebut|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #dee2e6;"><strong>📅 Fin:</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #dee2e6;">{{ reservation.dateFin|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #dee2e6;"><strong>💰 Prix total:</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #dee2e6; color: #28a745; font-size: 18px; font-weight: bold;">{{ reservation.prixTotal }}€</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 0;"><strong>📊 Statut:</strong></td>
+                <td style="padding: 8px 0;"><span style="background: #ffc107; padding: 3px 8px; border-radius: 3px; color: #000;">{{ reservation.statut }}</span></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <p style="margin: 0;"><strong>⏳ Prochaine étape:</strong> Vous recevrez un email de confirmation dès validation par notre équipe.</p>
+    </div>
+    
+    <hr style="margin: 20px 0;">
+    
+    <p style="color: #666;">
+        📧 En cas de question, n'hésitez pas à nous contacter.<br>
+        Merci de votre confiance ! 🙏
+    </p>
+    
+    <p style="color: #999; font-size: 12px;">Email envoyé automatiquement le {{ "now"|date('d/m/Y à H:i') }}</p>
+</div>

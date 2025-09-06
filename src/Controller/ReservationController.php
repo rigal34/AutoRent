@@ -4,6 +4,7 @@ namespace App\Controller;
 use DateTimeImmutable; 
 use App\Entity\Vehicule;
 use App\Entity\Reservation;
+use App\Service\NotificationService; 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ use App\Form\ReservationFormType;
 final class ReservationController extends AbstractController
 {
     #[Route('/reservation/{id}', name: 'app_reservation_new')]
-    public function new(Vehicule $vehicule, Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Vehicule $vehicule, Request $request, EntityManagerInterface $entityManager, NotificationService $notificationService): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
             $this->addFlash('info', 'Vous devez être connecté pour pouvoir réserver.');
@@ -52,14 +53,16 @@ final class ReservationController extends AbstractController
             $prixTotal = $nombreJours * $vehicule->getTarifJournalier();
             $reservation->setPrixTotal($prixTotal);
 
-            //  MARQUE LE VÉHICULE COMME INDISPONIBLE
+            //  MARQUE LE VÉHICULE COMME INDISPONIBLE automatiquement lorsque la resevervation est validé pour éviter les conflits
             $vehicule->setStatut(false); // false = indisponible
 
             // Sauvegarder tout en attentant la confirmation admin
             $entityManager->persist($reservation);
             $entityManager->persist($vehicule);
             $entityManager->flush();
+            //   une fois la confirmation faite : ENVOI DES EMAILS
 
+            $notificationService->sendReservationNotifications($reservation);
             $this->addFlash('success', 'Réservation confirmée ! Total: ' . $prixTotal . '€ pour ' . $nombreJours . ' jour(s)');
             return $this->redirectToRoute('app_vehicules_index');
         }
