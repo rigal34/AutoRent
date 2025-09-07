@@ -440,3 +440,11 @@ Injection Symfony automatique
 
 
 👨‍💼 SYSTÈME PROFESSIONNEL ET SCALABLE ! 💪📬
+
+## 📋 Mise à jour du formulaire de réservation
+
+**Nouveaux champs ajoutés :**
+- 📧 **Email** : Contact client (EmailType, validation automatique)
+- 📱 **Téléphone** : Contact d'urgence (TelType, format numérique)
+
+**Bénéfices :** Amélioration de la communication et validation des données.

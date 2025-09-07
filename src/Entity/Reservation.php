@@ -38,6 +38,18 @@ class Reservation
     #[ORM\JoinColumn(nullable: false)]
     private ?Vehicule $vehicule = null;
 
+   #[ORM\Column(length: 10, nullable: true)]
+    private ?string $typePermis = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $commentaires = null;
+
+
+     public function __construct() {
+     $this->dateReservation = new DateTimeImmutable();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -123,6 +135,30 @@ class Reservation
     public function setVehicule(?Vehicule $vehicule): static
     {
         $this->vehicule = $vehicule;
+
+        return $this;
+    }
+
+    public function getTypePermis(): ?string
+    {
+        return $this->typePermis;
+    }
+
+    public function setTypePermis(string $typePermis): static
+    {
+        $this->typePermis = $typePermis;
+
+        return $this;
+    }
+
+    public function getCommentaires(): ?string
+    {
+        return $this->commentaires;
+    }
+
+    public function setCommentaires(?string $commentaires): static
+    {
+        $this->commentaires = $commentaires;
 
         return $this;
     }

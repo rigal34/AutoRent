@@ -13,10 +13,10 @@ class ReservationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('dateReservation', DateTimeType::class, [
-                'label' => 'Date de la réservation',
-                'widget' => 'single_text',
-            ])
+            // ->add('dateReservation', DateTimeType::class, [
+            //     'label' => 'Date de la réservation',
+            //     'widget' => 'single_text',
+            // ])
             ->add('dateDebut', DateTimeType::class, [
                 'label' => 'Date de début',
                 'widget' => 'single_text',// Widget pour le champ de date et heure
@@ -24,13 +24,21 @@ class ReservationFormType extends AbstractType
             ->add('dateFin', DateTimeType::class, [
                 'label' => 'Date de fin',
                 'widget' => 'single_text',
-            ]);
+            ])
+            ->add('typePermis', null, [                  
+            'label' => 'Type de permis',
+            'required' => false,
+           ])
+            ->add('commentaires', null, [                  
+            'label' => 'Commentaires',
+            'required' => false,
+             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Reservation::class, // ✅ Lier au modèle Reservation
+            'data_class' => Reservation::class, 
         ]);
     }
 }

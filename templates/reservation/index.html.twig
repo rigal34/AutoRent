@@ -11,9 +11,11 @@
             
             {{ form_start(reservationForm) }}
               
-                {{ form_row(reservationForm.dateReservation) }}
+                {# {{ form_row(reservationForm.dateReservation) }} #}
                 {{ form_row(reservationForm.dateDebut) }}
                 {{ form_row(reservationForm.dateFin) }}
+                {{ form_row(reservationForm.typePermis) }}
+                {{ form_row(reservationForm.commentaires) }}
                 
                 <button type="submit" class="btn btn-primary mt-3">Confirmer la réservation</button>
             {{ form_end(reservationForm) }}
