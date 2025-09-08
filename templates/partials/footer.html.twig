@@ -1,18 +1,58 @@
-<footer class="border-top bg-dark rounded shadow-sm">
+<style>
+    body {
+        padding-top: 80px !important;
+    }
+
+    .navbar-prestige {
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%) !important;
+        border-bottom: 2px solid #ffc107;
+        box-shadow: 0 2px 15px rgba(255, 193, 7, 0.2);
+        transition: all 0.3s ease;
+        /* 🎯 LARGEUR RÉDUITE POUR ALIGNER AU HEADER */
+        margin: 0 auto;
+        max-width: calc(100% - 24px); /* Réduction de 12px de chaque côté */
+    }
+
+    .navbar-prestige .nav-link:hover {
+        color: #ffc107 !important;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-brand {
+        color: #ffc107 !important;
+        font-weight: bold !important;
+    }
+
+    /* 🚀 FOOTER ALIGNÉ COMME LA NAVBAR */
+    .footer-prestige {
+        /* 🎯 MÊME PRINCIPE QUE LA NAVBAR */
+        margin: 0 auto;
+        max-width: calc(100% - 24px); /* Même réduction que navbar */
+        
+        box-shadow: 0 -2px 15px rgba(255, 193, 7, 0.2); /* Ombre vers le haut */
+        border-top: 2px solid #ffc107; /* Bordure dorée en haut */
+    }
+
+    /* 🎨 RESPONSIVE POUR MOBILE */
+    @media (max-width: 768px) {
+        .navbar-prestige, .footer-prestige {
+            max-width: calc(100% - 16px); /* Moins de réduction sur mobile */
+            margin: 0 8px;
+        }
+    }
+</style>
+
+<footer class="bg-dark shadow-sm footer-prestige">
   <div class="container py-2 my-1">
     <div class="d-flex justify-content-between align-items-center">
       <!-- Gauche -->
-   
        <span class="text-white me-auto">© 2025 Company, Inc</span>
-
-     
-
 
       <!-- Droite : Accueil + Instagram + Facebook -->
       <nav class="d-flex align-items-center gap-3">
         <a href="{{ path('app_home') }}" class="text-white text-decoration-none">Accueil</a>
 
-        <!-- Instagram () -->
+        <!-- Instagram -->
         <a href="https://www.instagram.com/" class="text-white icon-link" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
             <rect x="3" y="3" width="18" height="18" rx="4" ry="4"
@@ -23,7 +63,7 @@
           </svg>
         </a>
 
-        <!-- Facebook (logo) -->
+        <!-- Facebook -->
         <a href="https://www.facebook.com/" class="text-white icon-link" aria-label="Facebook">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
             <path fill="currentColor"

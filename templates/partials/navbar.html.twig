@@ -1,62 +1,104 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRent</title>
-    {{ encore_entry_link_tags('app') }}
-    {{ encore_entry_script_tags('app') }}
+<!-- 🎨 CSS POUR LA NAVBAR -->
+<style>
+    body {
+        padding-top: 80px !important;
+    }
     
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow-sm mb-1">
-        <div class="container-fluid">
-            <!-- Logo positionné à gauche -->
-            <a class="navbar-brand" href="{{ path('app_home') }}">AutoRent</a>
+     .navbar-prestige {
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%) !important;
+        border-bottom: 2px solid #ffc107;
+        box-shadow: 0 2px 15px rgba(255, 193, 7, 0.2);
+        transition: all 0.3s ease;
+        /* 🎯 LARGEUR RÉDUITE POUR ALIGNER AU HEADER */
+        margin: 0 auto;
+        max-width: calc(100% - 24px); /* Réduction de 20px de chaque côté */
+        /* Coins arrondis en bas pour style */
+    }
 
-            <!-- Bouton burger positionné à droite -->
-            <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    .navbar-prestige .nav-link:hover {
+        color: #ffc107 !important;
+        transition: color 0.3s ease;
+    }
 
-            <!-- Contenu du menu -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- Menu principal centré -->
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ path('app_home') }}">Accueil</a>
-                    </li>
+    .navbar-brand {
+        color: #ffc107 !important;
+        font-weight: bold !important;
+    }
+</style>
 
-                    {#  path('app_vehicule_show') #}
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ path('app_vehicules_index') }}">Notre Catalogue</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ path('app_contact') }}">Contact</a>
-                    </li>
-                </ul>
+<!-- 🚀 LA NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-prestige">
+    <div class="container-fluid">
+        <!-- Logo positionné à gauche -->
+        <a class="navbar-brand" href="{{ path('app_home') }}"> AutoRent</a>
 
-                <!-- Boutons positionnement de mes boutons à droite -->
-                <div class="btn-container d-flex">
-                {# si l'utilisateur est connecté vient de symfony #}
+        <!-- Bouton burger -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Contenu du menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Menu principal centré -->
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ path('app_home') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ path('app_vehicules_index') }}">Notre Catalogue</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ path('app_actualite') }}">Actualité</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ path('app_contact') }}">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Boutons à droite -->
+            <div class="btn-container d-flex gap-2">
                 {% if app.user %}
-                    <a href="{{ path('app_logout') }}" class="btn btn-dark">Déconnexion</a>
+                    <a href="{{ path('app_logout') }}" class="btn btn-outline-warning">Déconnexion</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}" class="btn btn-dark">Connexion</a>
-                    <a href="{{ path('app_register') }}" class="btn btn-dark">S'inscrire</a>
+                    <a href="{{ path('app_login') }}" class="btn btn-outline-warning">Connexion</a>
+                    <a href="{{ path('app_register') }}" class="btn btn-warning">S'inscrire</a>
                 {% endif %}
-                </div>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    
+<!-- 🔥 SCRIPT POUR L'EFFET SCROLL -->
+<script>
+    // 🔒 Protection contre les exécutions multiples
+    if (!window.navbarScrollInitialized) {
+        window.navbarScrollInitialized = true;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎉 DOM est prêt depuis navbar.html.twig !');
 
-   
-</body>
-</html>
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar-prestige');
+
+                if (navbar) {
+                    if (window.scrollY > 50) {
+                        navbar.style.background = 'rgba(15, 15, 15, 0.95)';
+                        navbar.style.boxShadow = '0 4px 25px rgba(255, 193, 7, 0.4)';
+                        console.log('📜 Scroll détecté !');
+                    } else {
+                        navbar.style.background = 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%)';
+                        navbar.style.boxShadow = '0 2px 15px rgba(255, 193, 7, 0.2)';
+                        console.log('🔝 Retour en haut !');
+                    }
+                } else {
+                    console.log('❌ Navbar non trouvée !');
+                }
+            });
+        });
+    }
+</script>

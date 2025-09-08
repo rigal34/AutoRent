@@ -1,0 +1,265 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Actualités Automobile Prestige {% endblock %}
+
+{% block body %}
+
+<!-- 💎 HERO SECTION LUXE SOMBRE -->
+<div class="bg-dark text-white py-5 position-relative" style="background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-2 fw-bold mb-4" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8); color: #f8f9fa;">
+                    Actualités Automobile Prestige
+                </h1>
+                <p class="fs-3 text-white-50 mb-4" style="font-weight: 300;">
+                    L'élégance automobile dans l'obscurité
+                </p>
+               
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="display-1" style="font-size: 6rem; opacity: 0.8;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 📋 SECTION ACTUALITÉS LUXE -->
+<div class="bg-dark py-5" style="background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%); min-height: 100vh;">
+    
+    <div class="container py-5">
+        
+        <!-- 📊 HEADER -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="display-4 fw-bold text-white mb-4">Collections Exclusives</h2>
+                <p class="fs-4 text-white-50 mb-4">Actualités premium du monde automobile</p>
+                <hr class="border-warning border-2 w-25 mx-auto opacity-75">
+            </div>
+        </div>
+
+        <!-- 🗂️ GRID ARTICLES -->
+        <div class="row g-4">
+            {% for actualite in actualites %}
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                
+                <!-- 📄 CARD LUXE BOOTSTRAP -->
+                <div class="card bg-dark border-0 h-100 shadow-lg" style="background: linear-gradient(145deg, #1a1a1a, #2d2d2d) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.7) !important;">
+                    
+                    <!-- 🖼️ IMAGE -->
+                    <div class="position-relative">
+                        <img src="{{ actualite.image ? asset('images/' ~ actualite.image) : asset('/public/images/default-auto.png') }}"
+                             class="card-img-top" 
+                             style="height: 327px; object-fit: cover; filter: brightness(0.8) contrast(1.1);"
+                             alt="{{ actualite.titre }}">
+                        
+                        <!-- 🏷️ BADGE OVERLAY -->
+                        <div class="position-absolute top-0 start-0 p-3">
+                            <span class="badge bg-warning text-dark px-3 py-2 fw-bold">VIP</span>
+                        </div>
+                        
+                        <!-- 🔥 HOT CORNER -->
+                        <div class="position-absolute top-0 end-0 p-3">
+                            <span class="badge bg-danger px-2 py-1 rounded-pill"></span>
+                        </div>
+                    </div>
+
+                    <!-- 📝 BODY -->
+                    <div class="card-body p-4">
+                        <h4 class="card-title text-white fw-bold mb-3 lh-base">
+                            {{ actualite.titre }}
+                        </h4>
+                        
+                        <p class="card-text text-white-50 mb-4" style="font-size: 0.95rem;">
+                            {{ actualite.contenu|replace({'&nbsp;': ' '})|striptags|slice(0, 100) }}...
+                             
+                        </p>
+                        
+                        <!-- 📊 META -->
+                        <div class="border-top border-secondary pt-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                
+                                <span class="badge bg-secondary text-warning ">Premium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 🔗 FOOTER -->
+                    <div class="card-footer bg-transparent border-0 p-4 pt-0">
+                        <button class="btn btn-warning w-100 fw-bold py-3 text-dark"
+                                data-bs-toggle="modal" 
+                                data-bs-target="#modal{{ actualite.id }}">
+                            DÉCOUVRIR LE L'ACTUALITÉS
+                        </button>
+                    </div>
+                </div>
+            </div>
+{# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #}
+            <!-- 🔍 MODAL LUXE -->
+            <div class="modal fade" id="modal{{ actualite.id }}" tabindex="-1">
+              <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-1">
+                    <div class="modal-content bg-dark border-0" style="background: linear-gradient(145deg, #0f0f0f, #1a1a1a) !important;">
+                        
+                        <!-- 📰 HEADER -->
+                        <div class="modal-header bg-warning text-dark border-0">
+                            <div class="w-100">
+                                <h3 class="modal-title fw-bold mb-2">{{ actualite.titre }}</h3>
+                                
+                            </div>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        
+                        <!-- 📄 BODY -->
+                        <div class="modal-body p-4">
+                            
+                            <!-- 🖼️ IMAGE PRINCIPALE -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <img src="{{ actualite.image ? asset('images/' ~ actualite.image) : asset('/public/images/default-auto.png') }}"
+                                         class="img-fluid rounded shadow-lg w-100" 
+                                         style="max-height: 680px; object-fit: cover; filter: brightness(0.9);"
+                                         alt="{{ actualite.titre }}">
+                                </div>
+                            </div>
+                            
+                            <!-- 📝 CONTENU -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="bg-dark p-4 rounded" style="background: rgba(255,255,255,0.05) !important;">
+                                        <h4 class="text-warning mb-3 fw-bold"> Article Complet</h4>
+                                        <div class="text-white-50 fs-5 lh-lg" style="text-align: justify;">
+                                           {{ actualite.contenu|raw }}
+                                        </div>
+                                        
+                                        <!-- 📊 TAGS -->
+                                        <div class="mt-4 pt-4 border-top border-secondary">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <span class="badge bg-secondary px-3 py-2">Automobile</span>
+                                                <span class="badge bg-warning text-dark px-3 py-2">Prestige</span>
+                                                <span class="badge bg-primary px-3 py-2">Innovation</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 🔗 FOOTER -->
+                        <div class="modal-footer bg-transparent border-top border-secondary">
+                            <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">
+                                ❌ Fermer
+                            </button>
+                            <button type="button" class="btn btn-warning text-dark fw-bold">
+                                ⭐ Ajouter aux Favoris
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# ///////////FIN DE LA MODAL #}
+            {% endfor %}
+        </div>
+        
+        <!-- 💔 EMPTY STATE -->
+        {% if actualites is empty %}
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <div class="display-1 text-white-50 mb-4"></div>
+                    <h3 class="text-white mb-3">Aucune actualité luxury disponible</h3>
+                    <p class="text-white-50 mb-4">Les dernières exclusivités arrivent bientôt...</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- 🏆 FOOTER LUXURY -->
+<div class="container-fluid py-5" style="background: linear-gradient(135deg, #0a0a0a, #1a1a1a) !important;">
+    <div class="container">
+        <!-- 🏆 HEADER -->
+        <div class="text-center mb-5">
+            <h2 class="display-5 text-warning fw-bold">UNIVERS PRESTIGE</h2>
+            <p class="text-white-50 fs-5">L'excellence automobile dans l'ombre</p>
+        </div>
+
+        <!-- 🎯 ROW AVEC 4 CARDS ALIGNÉES -->
+        <div class="row g-4">
+            <!-- 🚗 CARD 1 - SUPERCARS -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card bg-transparent border-warning text-center h-100 position-relative overflow-hidden">
+                    <img src="{{ asset('images/super-car.png') }}" 
+                         class="position-absolute top-0 start-0 w-100 h-100" 
+                         style="object-fit: cover; opacity: 0.7; z-index: 1;"
+                         alt="Supercar">
+                    
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" 
+                         style="opacity: 0.4; z-index: 2;"></div>
+                    
+                    <div class="card-body p-4 position-relative d-flex flex-column justify-content-end" style="z-index: 3; min-height: 200px;">
+                        <h5 class="card-title text-white fw-bold text-shadow">Supercars</h5>
+                        <p class="card-text text-white text-shadow">Véhicules d'exception</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🏍️ CARD 2 - MOTOS PRESTIGE -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card bg-transparent border-warning text-center h-100 position-relative overflow-hidden">
+                    <img src="{{ asset('images/moto_prestige.png') }}" 
+                         class="position-absolute top-0 start-0 w-100 h-100" 
+                         style="object-fit: cover; opacity: 0.7; z-index: 1;"
+                         alt="Motos Prestige">
+
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" 
+                         style="opacity: 0.4; z-index: 2;"></div>
+
+                    <div class="card-body p-4 position-relative d-flex flex-column justify-content-end" style="z-index: 3; min-height: 200px;">
+                        <h5 class="card-title text-white fw-bold text-shadow">Motos Prestige</h5>
+                        <p class="card-text text-white text-shadow">Collections exclusives</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 💎 CARD 3 - LUXURY EDITION -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card bg-transparent border-warning text-center h-100 position-relative overflow-hidden">
+                    <img src="{{ asset('images/luxureVehicule.png') }}" 
+                         class="position-absolute top-0 start-0 w-100 h-100" 
+                         style="object-fit: cover; opacity: 0.7; z-index: 1;"
+                         alt="Luxury Edition">
+
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" 
+                         style="opacity: 0.4; z-index: 2;"></div>
+
+                    <div class="card-body p-4 position-relative d-flex flex-column justify-content-end" style="z-index: 3; min-height: 200px;">
+                        <h5 class="card-title text-white fw-bold text-shadow">Luxury Edition</h5>
+                        <p class="card-text text-white text-shadow">VIP</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ⚡ CARD 4 - ÉLECTRIQUE VIP -->
+             <!-- 💎 CARD 3 - LUXURY EDITION -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card bg-transparent border-warning text-center h-100 position-relative overflow-hidden">
+                    <img src="{{ asset('images/tesla.png') }}" 
+                         class="position-absolute top-0 start-0 w-100 h-100" 
+                         style="object-fit: cover; opacity: 0.7; z-index: 1;"
+                         alt="Luxury Edition">
+
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" 
+                         style="opacity: 0.4; z-index: 2;"></div>
+
+                    <div class="card-body p-4 position-relative d-flex flex-column justify-content-end" style="z-index: 3; min-height: 200px;">
+                        <h5 class="card-title text-white fw-bold text-shadow">ÉLECTRIQUE VIP</h5>
+                        <p class="card-text text-white text-shadow">Futur premium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

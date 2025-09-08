@@ -7,7 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+
 
 class ActualiteCrudController extends AbstractCrudController
 {
@@ -23,9 +23,8 @@ class ActualiteCrudController extends AbstractCrudController
           
             TextField::new('titre'),
             TextEditorField::new('contenu'),
-            DateTimeField::new('datePublication'),
             ImageField::new('image') 
-                ->setBasePath('images/') 
+                ->setBasePath('images/')  
                 ->setUploadDir('public/images')
                 ->setRequired(false) 
                 ->setFormTypeOptions(['attr' => ['accept' => 'image/*']]), 

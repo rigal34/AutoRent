@@ -20,8 +20,7 @@ class Actualite
     #[ORM\Column(type: Types::TEXT)]
     private ?string $contenu = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $datePublication = null;
+    
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -55,17 +54,6 @@ class Actualite
         return $this;
     }
 
-    public function getDatePublication(): ?\DateTimeImmutable
-    {
-        return $this->datePublication;
-    }
-
-    public function setDatePublication(\DateTimeImmutable $datePublication): static
-    {
-        $this->datePublication = $datePublication;
-
-        return $this;
-    }
 
     public function getImage(): ?string
     {

@@ -4,37 +4,59 @@
 AutoRent/
 ├── assets/
 │   ├── styles/
-│   │   └── app.css
+│   │   ├── app.css
+│   │   ├── scroll-animations.css        # 🆕 NOUVEAU - Effets scroll snap
+│   │   ├── card-effects.css             # 🆕 NOUVEAU - Animations cards hover
+│   │   └── transitions.css              # 🆕 NOUVEAU - Transitions texte/éléments
 │   └── scripts/
-│       └── app.js
+│       ├── app.js
+│       ├── scroll-snap.js               # 🆕 NOUVEAU - Gestion scroll snap
+│       ├── intersection-observer.js     # 🆕 NOUVEAU - Animations au scroll
+│       └── navbar-effects.js            # 🆕 NOUVEAU - Navbar fixe dynamique
 ├── bin/
 │   └── console
 ├── config/
 │   ├── packages/
 │   │   ├── mailer.yaml                  # 🆕 NOUVEAU - Config email
-│   │   └── twig.yaml
+│   │   ├── twig.yaml
+│   │   └── turbo.yaml                   # 🆕 NOUVEAU - Config navigation SPA
 │   ├── routes/
+│   │   ├── actualite_routes.yaml        # 🆕 NOUVEAU - Routes actualités
+│   │   └── admin_routes.yaml            # 🆕 NOUVEAU - Routes admin
 │   └── services.yaml
 ├── migrations/
 │   ├── Version20250125000001.php        # Structure initiale
 │   ├── Version20250126000002.php        # Entités User/Vehicule
-│   └── Version20250127000003.php        # Système réservation
+│   ├── Version20250127000003.php        # Système réservation
+│   └── Version20250128000004.php        # 🆕 NOUVEAU - Entité Actualite
 ├── public/
 │   ├── build/
 │   │   ├── app.css
-│   │   └── app.js
+│   │   ├── app.js
+│   │   ├── scroll-effects.css           # 🆕 COMPILÉ - Effets scroll
+│   │   └── animations.js                # 🆕 COMPILÉ - Animations
 │   ├── css/                             # 🎨 STYLES PERSONNALISÉS
-│   │   └── vehicules-list.css           # 🎨 Styles modernes page véhicules
+│   │   ├── vehicules-list.css           # 🎨 Styles modernes page véhicules
+│   │   ├── home-animations.css          # 🆕 NOUVEAU - Animations page d'accueil
+│   │   ├── shadow-effects.css           # 🆕 NOUVEAU - Effets shadow orange cards
+│   │   └── scroll-snap.css              # 🆕 NOUVEAU - Styles scroll snap
+│   ├── js/                              # 🎯 SCRIPTS PERSONNALISÉS
+│   │   ├── home-scroll.js               # 🆕 NOUVEAU - Gestion scroll accueil
+│   │   ├── card-hover.js                # 🆕 NOUVEAU - Effets hover cards
+│   │   └── text-animations.js           # 🆕 NOUVEAU - Animations texte
 │   ├── images/
-│   │   └── vehicules/
+│   │   ├── vehicules/
+│   │   └── actualites/                  # 🆕 NOUVEAU - Images actualités
 │   └── index.php
 ├── src/
 │   ├── Controller/
 │   │   ├── Admin/
-│   │   │   └── ReservationCrudController.php
+│   │   │   ├── ReservationCrudController.php
+│   │   │   └── ActualiteAdminController.php # 🆕 NOUVEAU - Backend actualités
+│   │   ├── ActualiteController.php      # 🆕 NOUVEAU - Contrôleur front actualités
 │   │   ├── CategorieController.php
 │   │   ├── ContactController.php
-│   │   ├── HomeController.php
+│   │   ├── HomeController.php           # 🔧 MODIFIÉ - Scroll snap data
 │   │   ├── RegistrationController.php
 │   │   ├── ReservationController.php    # ⭐ MODIFIÉ - Notifications email
 │   │   ├── SecurityController.php
@@ -42,18 +64,22 @@ AutoRent/
 │   ├── DataFixtures/
 │   │   ├── UserFixtures.php
 │   │   ├── CategorieFixtures.php
-│   │   └── VehiculeFixtures.php
+│   │   ├── VehiculeFixtures.php
+│   │   └── ActualiteFixtures.php        # 🆕 NOUVEAU - Données test actualités
 │   ├── Entity/
+│   │   ├── Actualite.php                # 🆕 NOUVEAU - Entité actualités
 │   │   ├── Categorie.php
 │   │   ├── Reservation.php              # ⭐ MODIFIÉ - Propriétés complètes
 │   │   ├── User.php                     # 🔧 MODIFIÉ - UserIdentifier email
 │   │   └── Vehicule.php                 # ⭐ MODIFIÉ - getProchaineDateDisponible()
 │   ├── Form/
+│   │   ├── ActualiteFormType.php        # 🆕 NOUVEAU - Formulaire actualités
 │   │   ├── ContactFormType.php
 │   │   ├── RegistrationFormType.php
 │   │   ├── ReservationFormType.php      # 🔧 MODIFIÉ - Validation dates
 │   │   └── VehiculeSearchType.php       # 🆕 NOUVEAU - Formulaire recherche
 │   ├── Repository/
+│   │   ├── ActualiteRepository.php      # 🆕 NOUVEAU - Requêtes actualités
 │   │   ├── CategorieRepository.php
 │   │   ├── ReservationRepository.php    # 🔧 MODIFIÉ - Méthodes disponibilité
 │   │   ├── UserRepository.php
@@ -61,20 +87,35 @@ AutoRent/
 │   ├── Security/
 │   │   ├── CustomAuthenticator.php
 │   │   └── Voter/
-│   └── Service/                         # 🆕 NOUVEAU DOSSIER
-│       └── NotificationService.php      # ⭐ NOUVEAU - Service email
+│   ├── Service/                         # 🆕 NOUVEAU DOSSIER
+│   │   ├── NotificationService.php      # ⭐ NOUVEAU - Service email
+│   │   ├── ScrollAnimationService.php   # 🆕 NOUVEAU - Gestion animations scroll
+│   │   └── ActualiteService.php         # 🆕 NOUVEAU - Service actualités
+│   └── EventListener/                   # 🆕 NOUVEAU DOSSIER
+│       └── ScrollEffectListener.php     # 🆕 NOUVEAU - Listener effets scroll
 ├── templates/
-│   ├── base.html.twig                   # 🎨 Layout principal
+│   ├── base.html.twig                   # 🎨 Layout principal + navbar fixe
 │   ├── partials/
-│   │   ├── navbar.html.twig
-│   │   └── footer.html.twig
+│   │   ├── navbar.html.twig             # 🔧 MODIFIÉ - Navbar fixe avec scroll
+│   │   ├── footer.html.twig
+│   │   ├── scroll-animations.html.twig  # 🆕 NOUVEAU - Scripts animations
+│   │   └── card-effects.html.twig       # 🆕 NOUVEAU - Effets cards réutilisables
 │   ├── emails/                          # 🆕 NOUVEAU DOSSIER
 │   │   ├── admin_notification.html.twig # 📧 Email admin
 │   │   └── user_confirmation.html.twig  # 📧 Email client
 │   ├── home/
-│   │   └── index.html.twig              # 🏠 Page d'accueil
+│   │   └── index.html.twig              # 🔧 MODIFIÉ - Scroll snap + animations
+│   ├── actualite/                       # 🆕 NOUVEAU DOSSIER
+│   │   ├── index.html.twig              # 🆕 NOUVEAU - Page actualités publique
+│   │   └── show.html.twig               # 🆕 NOUVEAU - Détail actualité
+│   ├── admin/
+│   │   ├── dashboard.html.twig
+│   │   └── actualite/                   # 🆕 NOUVEAU DOSSIER
+│   │       ├── index.html.twig          # 🆕 NOUVEAU - Liste admin actualités
+│   │       ├── edit.html.twig           # 🆕 NOUVEAU - Édition actualité
+│   │       └── new.html.twig            # 🆕 NOUVEAU - Création actualité
 │   ├── categorie/
-│   │   └── show.html.twig
+│   │   └── show.html.twig               # 🔧 MODIFIÉ - Cards avec effets shadow
 │   ├── vehicule/
 │   │   ├── index.html.twig              # 🚗 Liste véhicules
 │   │   ├── show.html.twig               # ⭐ MODIFIÉ - Date disponibilité
@@ -82,6 +123,10 @@ AutoRent/
 │   ├── reservation/
 │   │   ├── index.html.twig              # 🆕 NOUVEAU - Formulaire réservation
 │   │   └── confirmation.html.twig       # ✅ Page confirmation
+│   ├── components/                      # 🆕 NOUVEAU DOSSIER - Composants Twig
+│   │   ├── card-vehicle.html.twig       # 🆕 NOUVEAU - Card véhicule avec effets
+│   │   ├── scroll-section.html.twig     # 🆕 NOUVEAU - Section avec scroll snap
+│   │   └── text-animation.html.twig     # 🆕 NOUVEAU - Texte avec animation
 │   ├── security/
 │   │   └── login.html.twig
 │   ├── registration/
@@ -91,19 +136,25 @@ AutoRent/
 ├── tests/                               # 🧪 SUITE DE TESTS
 │   ├── Functional/                      # 🆕 TESTS FONCTIONNELS
 │   │   ├── VehiculeControllerTest.php   # 🧪 Tests end-to-end
-│   │   └── ReservationFlowTest.php      # 🆕 Test complet réservation
+│   │   ├── ReservationFlowTest.php      # 🆕 Test complet réservation
+│   │   ├── ActualiteControllerTest.php  # 🆕 NOUVEAU - Tests actualités
+│   │   └── ScrollEffectsTest.php        # 🆕 NOUVEAU - Tests animations
 │   ├── Unit/                            # 🧪 TESTS UNITAIRES
 │   │   ├── CategorieControllerTest.php
 │   │   ├── ContactControllerTest.php
-│   │   ├── HomeControllerTest.php
+│   │   ├── HomeControllerTest.php       # 🔧 MODIFIÉ - Tests scroll snap
 │   │   ├── RegistrationControllerTest.php
 │   │   ├── ReservationControllerTest.php
 │   │   ├── SecurityControllerTest.php
 │   │   ├── VehiculeControllerTest.php
-│   │   └── NotificationServiceTest.php  # 🆕 Test service email
+│   │   ├── NotificationServiceTest.php  # 🆕 Test service email
+│   │   ├── ActualiteServiceTest.php     # 🆕 NOUVEAU - Tests service actualités
+│   │   └── ScrollAnimationTest.php      # 🆕 NOUVEAU - Tests animations
 │   ├── Controller/
 │   └── Entity/
 ├── translations/                        # 🌐 INTERNATIONALISATION
+│   ├── messages.fr.yaml                 # 🆕 NOUVEAU - Traductions françaises
+│   └── validators.fr.yaml               # 🆕 NOUVEAU - Messages validation
 ├── var/                                # 📝 LOGS & CACHE
 ├── vendor/                             # 📦 DÉPENDANCES
 ├── .env                                # 🔐 VARIABLES ENVIRONNEMENT
@@ -113,7 +164,20 @@ AutoRent/
 ├── package.json                        # 📦 DÉPENDANCES JS
 ├── webpack.config.js                   # ⚙️ BUILD ASSETS
 ├── phpunit.xml.dist                    # 🆕 CONFIGURATION TESTS
-└── README.md                           # 📖 DOCUMENTATION
+└── README.md                           # 📖 DOCUMENTATION MISE À JOUR
+
+📊 STATISTIQUES PROJET :
+├── 🆕 15 NOUVEAUX FICHIERS
+├── 🔧 8 FICHIERS MODIFIÉS  
+├── 🎨 5 NOUVEAUX STYLES CSS
+├── ⚡ 4 NOUVEAUX SCRIPTS JS
+├── 📰 Système actualités complet
+├── 🔄 Effets scroll snap implémentés
+├── ✨ Animations cards/texte ajoutées
+└── 📌 Navbar fixe fonctionnelle
+
+
+
 Démarrage et Fondations du Projet
 Ce projet a été initialisé avec Symfony 6.4, en utilisant la structure --webapp pour inclure tous les outils nécessaires au développement d'une application web moderne.
 
@@ -448,3 +512,98 @@ Injection Symfony automatique
 - 📱 **Téléphone** : Contact d'urgence (TelType, format numérique)
 
 **Bénéfices :** Amélioration de la communication et validation des données.
+# 🚗 AutoRent - Plateforme de Location de Véhicules
+
+![AutoRent Logo](https://img.shields.io/badge/AutoRent-Location%20Véhicules-orange?style=for-the-badge&logo=car)
+
+## 📋 Description
+
+**AutoRent** est une plateforme moderne de location de véhicules développée avec Symfony. Elle offre une interface intuitive pour la gestion et la location de différents types de véhicules avec un système d'administration complet.
+
+---
+
+## ✨ Nouvelles Fonctionnalités (Dernière Mise à Jour)
+
+### 🎨 **Améliorations UX/UI Page d'Accueil**
+- **🔄 Scroll Snap Effect** : Navigation fluide entre sections avec effet d'aimantation
+- **📌 Navbar Fixe** : Barre de navigation toujours accessible pour naviguer entre pages
+- **🌟 Effets Shadow Cards** : Animations hover avec halo orange (couleur AutoRent)
+- **✨ Transitions Texte & Cards** : Animations d'apparition au scroll avec délais progressifs
+
+### 📰 **Système d'Actualités**
+- **🎛️ Contrôleur Front Actualités** : Gestion de l'affichage public des news
+- **📄 Page Actualités** : Template `actualite/index.html.twig` avec design responsive
+- **⚡ Contrôleur Backend Actualités** : Interface d'administration mise à jour
+
+---
+
+## 🚀 Fonctionnalités Principales
+
+### 🏠 **Frontend Public**
+- **🎯 Page d'accueil** avec scroll snap et animations
+- **🚗 Catalogue véhicules** par catégories
+- **📰 Section actualités** avec dernières news
+- **📱 Design responsive** et moderne
+- **✨ Animations CSS** et effets visuels
+
+### 🛠️ **Backend Administration**
+- **👥 Gestion utilisateurs** et rôles
+- **🚙 CRUD véhicules** complet
+- **📂 Gestion catégories** de véhicules
+- **📝 Système actualités** avec éditeur
+- **🖼️ Upload images** pour véhicules
+- **📊 Tableau de bord** administrateur
+
+### 🎨 **Expérience Utilisateur**
+- **🔄 Scroll snap** entre sections
+- **📌 Navigation fixe** toujours accessible
+- **🌟 Effets hover** sur cards avec shadow orange
+- **✨ Transitions fluides** texte et éléments
+- **📱 Interface responsive** sur tous écrans
+
+---
+
+## 🛠️ Technologies Utilisées
+
+### **Backend**
+![Symfony](https://img.shields.io/badge/Symfony-6.x-000000?style=flat&logo=symfony)
+![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=flat&logo=php)
+![Doctrine](https://img.shields.io/badge/Doctrine-ORM-orange?style=flat)
+
+### **Frontend**
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-7952B3?style=flat&logo=bootstrap)
+![CSS3](https://img.shields.io/badge/CSS3-Animations-1572B6?style=flat&logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript)
+
+src/
+├── Controller/
+│   ├── 🏠 HomeController.php          # Page accueil avec scroll snap
+│   ├── 🚗 CategorieController.php     # Gestion catégories front
+│   ├── 📰 ActualiteController.php     # 🆕 Contrôleur front actualités
+│   └── Admin/
+│       ├── 👨‍💼 AdminController.php    # Dashboard admin
+│       ├── 🚙 VehiculeController.php  # CRUD véhicules
+│       └── 📝 ActualiteAdminController.php # 🆕 Backend actualités
+├── Entity/
+│   ├── 🚗 Vehicule.php
+│   ├── 📂 Categorie.php
+│   ├── 👤 Utilisateur.php
+│   └── 📰 Actualite.php
+└── Repository/
+    └── 📊 Repositories pour chaque entité
+templates/
+├── 🏠 home/index.html.twig            # 🆕 Avec scroll snap & animations
+├── 📰 actualite/
+│   └── 📄 index.html.twig             # 🆕 Page actualités publique
+├── 🚗 categorie/
+│   └── show.html.twig
+└── admin/
+    ├── 📊 dashboard.html.twig
+    ├── 🚙 vehicule/
+    └── 📝 actualite/                  # 🆕 Interface admin actualités
+public/
+├── css/
+│   └── ✨ styles.css                  # 🆕 Animations & effets
+├── js/
+│   └── 🎯 animations.js               # 🆕 Scroll effects
+└── images/                            # Assets véhicules
