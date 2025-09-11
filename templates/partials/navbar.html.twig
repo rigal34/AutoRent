@@ -1,32 +1,7 @@
-<!-- 🎨 CSS POUR LA NAVBAR -->
-<style>
-    body {
-        padding-top: 80px !important;
-    }
-    
-     .navbar-prestige {
-        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%) !important;
-        border-bottom: 2px solid #ffc107;
-        box-shadow: 0 2px 15px rgba(255, 193, 7, 0.2);
-        transition: all 0.3s ease;
-        /* 🎯 LARGEUR RÉDUITE POUR ALIGNER AU HEADER */
-        margin: 0 auto;
-        max-width: calc(100% - 24px); /* Réduction de 20px de chaque côté */
-        /* Coins arrondis en bas pour style */
-    }
 
-    .navbar-prestige .nav-link:hover {
-        color: #ffc107 !important;
-        transition: color 0.3s ease;
-    }
+<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 
-    .navbar-brand {
-        color: #ffc107 !important;
-        font-weight: bold !important;
-    }
-</style>
 
-<!-- 🚀 LA NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-prestige">
     <div class="container-fluid">
         <!-- Logo positionné à gauche -->
@@ -73,9 +48,17 @@
     </div>
 </nav>
 
-<!-- 🔥 SCRIPT POUR L'EFFET SCROLL -->
+
+
+{# //////////////////////////////////////FIN POUR LA NAVBAR//////////////////////////////////////////////////////////////////// #}
+{# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #}
+{# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #}
+<!--  SCRIPT POUR L'EFFET SCROLL -->
+
+
+
 <script>
-    // 🔒 Protection contre les exécutions multiples
+    //  Protection contre les exécutions multiples
     if (!window.navbarScrollInitialized) {
         window.navbarScrollInitialized = true;
         
@@ -102,3 +85,5 @@
         });
     }
 </script>
+
+{# :::::::::::::::FIN DE SCRIPT POUR L'EFFET SCROLL:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #}

@@ -31,9 +31,11 @@ AutoRent/
 │   ├── Version20250127000003.php        # Système réservation
 │   └── Version20250128000004.php        #  - Entité Actualite
 ├── public/
+|      |_________css/
+|                 |____navbar.css
 │   ├── build/                           #  ASSETS COMPILÉS WEBPACK
-│   │   ├── app.css
-│   │   ├── app.js
+│   │   ├
+│   │   ├
 │   │   ├── scroll-effects.css           #  - Effets scroll
 │   │   ├── animations.js                #  - Animations
 │   │   ├── vendors.js                   #  Librairies externes

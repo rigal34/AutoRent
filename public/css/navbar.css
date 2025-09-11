@@ -1,0 +1,79 @@
+
+/* speciale boutons CONNEXION DECONNECTION INSCRIPTION */
+.btn-outline-warning {
+    border-color: #ffc107 !important;
+    color: #ffffff !important;  /* TEXTE BLANC */
+    background-color: transparent;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-outline-warning:hover {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #000000 !important;  /* Noir au hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+}
+
+.btn-warning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #ffffff !important;  /*  TEXTE BLANC */
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #000000 !important;  /* Noir au hover pour contraste */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+/*  élément est "sélectionné" pour interaction) */
+.btn-warning:focus {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.3);
+}
+
+
+
+ /* _______________________CSS POUR LA NAVBAR ________________________________________________________________________________________-->
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  */
+/* ____________________________________________________________ ______________ _____________________ ___ _ __ _ _ _ _ _ _ _  ____________ */
+
+ body {
+        padding-top: 80px !important;
+    }
+    
+     .navbar-prestige {
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%) !important;
+        border-bottom: 2px solid #ffc107;
+        box-shadow: 0 2px 15px rgba(255, 193, 7, 0.2);
+        transition: all 0.3s ease;
+        /*  LARGEUR RÉDUITE POUR ALIGNER AU HEADER */
+        margin: 0 auto;
+        max-width: calc(100% - 24px); /* Réduction de 20px de chaque côté */
+        /* Coins arrondis en bas pour style */
+    }
+
+    .navbar-prestige .nav-link:hover {
+        color: #ffc107 !important;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-brand {
+        color: #ffc107 !important;
+        font-weight: bold !important;
+    }
+
+
+    /* {# ::::::::::::FIN CSS::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #}
+{# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #}
+{# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #}
+<!--  LA NAVBAR fin -->

@@ -1,13 +1,16 @@
-//  VERSION SIMPLE MAIS ROBUSTE
+
+/* LANCEUR  POUR LES ANIMATIONS DE SCROLL */
+
+//  Réinitialise le système d'animation avant de commencer le code
 function setupAnimations() {
     console.log(' Setup animations...');
     
-    // Nettoyer
+    
     if (window.myObserver) {
         window.myObserver.disconnect();
     }
 
-    // Créer observer
+    //  CRÉE UN OBSERVATEUR AVEC UNE LOGIQUE D'ANIMATION CONDITIONNELLE
     window.myObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             const isHero = entry.target.classList.contains('hero-text') || entry.target.classList.contains('hero-subtitle');
@@ -20,12 +23,12 @@ function setupAnimations() {
         });
     }, { threshold: 0.2, rootMargin: '0px 0px -80px 0px' });
 
-    // Observer éléments
+    
     document.querySelectorAll('.hero-text, .hero-subtitle, .category-title, .category-card').forEach(el => {
         window.myObserver.observe(el);
     });
 
-    // Animation immédiate si en vue
+    // APRÈS UN COURT DÉLAI, VÉRIFIE ET AFFICHE LES TITRES
     setTimeout(() => {
         document.querySelectorAll('.hero-text, .hero-subtitle').forEach(el => {
             const rect = el.getBoundingClientRect();
@@ -35,13 +38,12 @@ function setupAnimations() {
         });
     }, 100);
 
-    console.log(' Animations OK !');
+    
 }
 
-//  TOUS LES ÉVÉNEMENTS
+//  LANCE LA CONFIGURATION DES ANIMATIONS DE PLUSIEURS FAÇONS
 document.addEventListener('DOMContentLoaded', setupAnimations);
 document.addEventListener('turbo:load', setupAnimations);
 window.addEventListener('pageshow', setupAnimations);
-setTimeout(setupAnimations, 500); // Sécurité
+setTimeout(setupAnimations, 500); 
 
-console.log(' Script robuste chargé !');

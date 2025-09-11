@@ -1,7 +1,7 @@
 
 /* SCRIPT DE GESTION GLOBALE DES ANIMATIONS AU DÉFILEMENT SCROLL */
 
-console.log('Actualités Prestige - Multi-Pages');
+
 
 let observer = null;
 
@@ -27,7 +27,7 @@ function createObserver() {
 
 // LANCE LE DÉTECTEUR D'ANIMATIONS AU SCROLL 
 function initScrollEffects() {
-    console.log('Init scroll effects...');
+    
     
     
     createObserver();
@@ -48,8 +48,7 @@ function initScrollEffects() {
         observer.observe(text);
     });
     
-    console.log('Cards observées:', cards.length);
-    console.log('Textes observés:', textElements.length);
+   
 }
 
 //  ARRÊTE LA SURVEILLANCE DES ANIMATIONS DE SCROLL
@@ -81,5 +80,5 @@ setTimeout(() => {
         el.style.transform = 'translateY(0)';
         el.style.transition = 'all 1.5s ease-out';
     });
-    console.log(' TEXTE FORCÉ VISIBLE !');
+   
 }, 100);
