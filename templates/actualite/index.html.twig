@@ -1,7 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} Actualités Automobile Prestige {% endblock %}
+{# On lie le CSS spécifique à cette page. #}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('actualites-css/scroll-effects.css') }}">
+    {{ parent() }}
+{% endblock %}
 
+{# On lie le JavaScript spécifique à cette page. #}
+{% block javascripts %}
+   <script src="{{ asset('actualites-js/scroll-effects.js') }}"></script>
+    {{ parent() }}
+{% endblock %}
 {% block body %}
 
 <!-- 💎 HERO SECTION LUXE SOMBRE -->
@@ -9,12 +19,12 @@
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h1 class="display-2 fw-bold mb-4" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8); color: #f8f9fa;">
-                    Actualités Automobile Prestige
-                </h1>
-                <p class="fs-3 text-white-50 mb-4" style="font-weight: 300;">
-                    L'élégance automobile dans l'obscurité
-                </p>
+    <h1 class="display-2 fw-bold mb-4 text-animation">
+    Actualités Automobile Prestige
+</h1>
+<p class="fs-3 text-white-50 mb-4 text-animation">
+    L'élégance automobile dans l'obscurité
+</p>
                
             </div>
             <div class="col-lg-4 text-center">
@@ -32,8 +42,8 @@
         <!-- 📊 HEADER -->
         <div class="row mb-5">
             <div class="col-12 text-center">
-                <h2 class="display-4 fw-bold text-white mb-4">Collections Exclusives</h2>
-                <p class="fs-4 text-white-50 mb-4">Actualités premium du monde automobile</p>
+               <h2 class="text-center mb-5 text-animation" style="color: #ffffff !important;">Collections Exclusives</h2>
+<p class="text-center mb-5 text-animation" style="color: #cccccc !important;">Actualités premium du monde automobile</p>
                 <hr class="border-warning border-2 w-25 mx-auto opacity-75">
             </div>
         </div>
@@ -261,5 +271,15 @@
         </div>
     </div>
 </div>
-
+<!-- 🚨 ANIMATION FORCÉE -->
+<script>
+setTimeout(() => {
+    document.querySelectorAll('.fade-in-on-load').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        el.style.transition = 'all 1.5s ease-out';
+    });
+    console.log('✅ TEXTE FORCÉ VISIBLE !');
+}, 100);
+</script>
 {% endblock %}

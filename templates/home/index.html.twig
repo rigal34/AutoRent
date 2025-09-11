@@ -6,10 +6,10 @@
 {% block body %}
 
 <style>
-    /* SCROLL SNAP SIMPLE */
+    /******************  debut SCROLL SNAP SIMPLE ********************************************************************************/
     html {
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
+       scroll-snap-type: y proximity;
+       scroll-behavior: smooth;
     }
 
     .hero-section {
@@ -88,13 +88,18 @@
     border: 2px solid rgba(255, 193, 7, 0.4);
     filter: brightness(1.1) contrast(1.1);
 }
+/******************  FIN SCROLL SNAP SIMPLE ********************************************************************************/
 </style>
+
+
+
+
 
 <!-- SECTION HERO -->
 <section class="hero-section">
     <div class="container-fluid p-0">
-       <header class="bg-dark text-white text-center py-5 rounded vh-100 d-flex flex-column justify-content-center">
-            <!-- 🎯 TEXTE AVEC CLASSES POUR ANIMATION -->
+       <header class="bg-dark text-white text-center py-5 rounded min-vh-100 d-flex flex-column justify-content-center">
+            <!--  TEXTE AVEC CLASSES POUR ANIMATION -->
             <div class="container mt-1"> 
                 <h1 id="hero-title" class="display-4 fw-bold mt-0 hero-text">Bienvenue sur notre site de location de véhicules</h1>
                 <p id="hero-subtitle" class="fs-4 hero-subtitle">Louez le véhicule de vos rêves en quelques clics.</p>
@@ -142,7 +147,7 @@
 <!-- SECTION CATÉGORIES -->
 <section class="categories-section d-flex flex-column justify-content-center">
     <div class="container-fluid">
-        <!-- 🎯 TITRE AVEC CLASSE POUR ANIMATION -->
+        <!-- TITRE AVEC CLASSE POUR ANIMATION -->
         <div class="row">
             <div class="col-12">
                 <h2 class="text-center mb-5 fw-bold category-title">Parcourir par catégorie</h2>
@@ -212,7 +217,7 @@ document.addEventListener('turbo:load', setupAnimations);
 window.addEventListener('pageshow', setupAnimations);
 setTimeout(setupAnimations, 500); // Sécurité
 
-console.log('🎯 Script robuste chargé !');
+console.log(' Script robuste chargé !');
 </script>
 
 {% endblock %}

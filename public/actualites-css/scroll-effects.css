@@ -1,0 +1,58 @@
+/*GESTION DES ANIMATIONS D'APPARITION AU SCROLL de la page actualité*/
+
+/*  ANIMATION carte fondu et en glissant vers le haut */
+.scroll-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+.scroll-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*  ANIMATION  POUR LE TEXTE */
+.text-animation {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s ease-out;
+}
+
+.text-animation.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* plus VISIBILITÉ POUR LES TITRES Collections Exclusives */
+h2.text-animation.show,
+p.text-muted.text-animation.show {
+    opacity: 1;
+    color: inherit;
+}
+
+
+.text-center.text-animation.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*EFFET HOVER carte effet soulevé */
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* MASQUAGE DES ÉLÉMENTS AVANT LEUR ANIMATION */
+.col-xl-4:not(.show),
+.col-lg-6:not(.show),
+.col-md-6:not(.show),
+.text-animation:not(.show) {
+    opacity: 0;
+}
+
+/*  définit l'apparence finale du texte une fois que l'animation est terminée. */
+.text-muted.text-animation.show {
+    opacity: 0.75; 
+    color: #6c757d;
+}
