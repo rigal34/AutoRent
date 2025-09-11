@@ -2,94 +2,19 @@
 
 {% block title %}Hello HomeController!
 {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('home-css/home.css') }}">
+    {{ parent() }}
+{% endblock %}
 
+{# On lie le JavaScript spécifique à cette page. #}
+{% block javascripts %}
+   <script src="{{ asset('home-js/home.js') }}"></script>
+    {{ parent() }}
+{% endblock %}
 {% block body %}
 
-<style>
-    /******************  debut SCROLL SNAP SIMPLE ********************************************************************************/
-    html {
-       scroll-snap-type: y proximity;
-       scroll-behavior: smooth;
-    }
 
-    .hero-section {
-        scroll-snap-align: start;
-        min-height: 100vh;
-    }
-
-    .categories-section {
-        scroll-snap-align: start;
-        padding: 100px 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    /* 🎯 ANIMATIONS FIABLES ET VISIBLES */
-    .hero-text {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    .hero-text.show {
-        opacity: 1;
-        transform: translateY(0);
-        transition: all 1s ease;
-    }
-
-    .hero-subtitle {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s ease;
-        transition-delay: 0.5s;
-    }
-
-    .hero-subtitle.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* 🚗 ANIMATIONS CARDS VISIBLES */
-    .category-title {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.8s ease;
-    }
-
-    .category-title.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .category-card {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.6s ease;
-    }
-
-    .category-card.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* 🎯 DÉLAIS POUR CARDS */
-    .category-card:nth-child(1) { transition-delay: 0.2s; }
-    .category-card:nth-child(2) { transition-delay: 0.4s; }
-    .category-card:nth-child(3) { transition-delay: 0.6s; }
-    .category-card:nth-child(4) { transition-delay: 0.8s; }
-
-	/* ✨ EFFET GLOW PRONONCÉ */
-.category-card .card:hover {
-    transform: translateY(-15px) scale(1.03);
-   box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.25),
-        0 0 30px rgba(255, 193, 7, 0.4),
-        0 0 60px rgba(255, 193, 7, 0.15);
-    border: 2px solid rgba(255, 193, 7, 0.4);
-    filter: brightness(1.1) contrast(1.1);
-}
-/******************  FIN SCROLL SNAP SIMPLE ********************************************************************************/
-</style>
 
 
 
@@ -154,7 +79,7 @@
             </div>
         </div>
 
-        <!-- 🚗 CARDS AVEC CLASSE POUR ANIMATION -->
+        <!--  CARDS AVEC CLASSE POUR ANIMATION -->
         <div class="row justify-content-center align-items-center" id="cards-container">
             {% for categorie in categories %}
                 <div class="col-md-3 mb-4 category-card">
@@ -170,54 +95,6 @@
     </div>
 </section>
 
-<script>
-// 🎯 VERSION SIMPLE MAIS ROBUSTE
-function setupAnimations() {
-    console.log('🔄 Setup animations...');
-    
-    // Nettoyer
-    if (window.myObserver) {
-        window.myObserver.disconnect();
-    }
 
-    // Créer observer
-    window.myObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            const isHero = entry.target.classList.contains('hero-text') || entry.target.classList.contains('hero-subtitle');
-            
-            if (entry.isIntersecting) {
-                entry.target.classList.add(isHero ? 'show' : 'visible');
-            } else {
-                entry.target.classList.remove(isHero ? 'show' : 'visible');
-            }
-        });
-    }, { threshold: 0.2, rootMargin: '0px 0px -80px 0px' });
-
-    // Observer éléments
-    document.querySelectorAll('.hero-text, .hero-subtitle, .category-title, .category-card').forEach(el => {
-        window.myObserver.observe(el);
-    });
-
-    // Animation immédiate si en vue
-    setTimeout(() => {
-        document.querySelectorAll('.hero-text, .hero-subtitle').forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight) {
-                el.classList.add('show');
-            }
-        });
-    }, 100);
-
-    console.log('✅ Animations OK !');
-}
-
-// 🚀 TOUS LES ÉVÉNEMENTS
-document.addEventListener('DOMContentLoaded', setupAnimations);
-document.addEventListener('turbo:load', setupAnimations);
-window.addEventListener('pageshow', setupAnimations);
-setTimeout(setupAnimations, 500); // Sécurité
-
-console.log(' Script robuste chargé !');
-</script>
 
 {% endblock %}

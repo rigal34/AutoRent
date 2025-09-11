@@ -14,7 +14,7 @@
 {% endblock %}
 {% block body %}
 
-<!-- 💎 HERO SECTION LUXE SOMBRE -->
+<!--  HERO SECTION LUXE SOMBRE -->
 <div class="bg-dark text-white py-5 position-relative" style="background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);">
     <div class="container py-5">
         <div class="row align-items-center">
@@ -34,12 +34,12 @@
     </div>
 </div>
 
-<!-- 📋 SECTION ACTUALITÉS LUXE -->
+<!--  SECTION ACTUALITÉS LUXE -->
 <div class="bg-dark py-5" style="background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%); min-height: 100vh;">
     
     <div class="container py-5">
         
-        <!-- 📊 HEADER -->
+        <!--  HEADER -->
         <div class="row mb-5">
             <div class="col-12 text-center">
                <h2 class="text-center mb-5 text-animation" style="color: #ffffff !important;">Collections Exclusives</h2>
@@ -48,33 +48,33 @@
             </div>
         </div>
 
-        <!-- 🗂️ GRID ARTICLES -->
+        <!--  GRID ARTICLES -->
         <div class="row g-4">
             {% for actualite in actualites %}
             <div class="col-xl-4 col-lg-6 col-md-6">
                 
-                <!-- 📄 CARD LUXE BOOTSTRAP -->
+                <!--  CARD LUXE BOOTSTRAP -->
                 <div class="card bg-dark border-0 h-100 shadow-lg" style="background: linear-gradient(145deg, #1a1a1a, #2d2d2d) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.7) !important;">
                     
-                    <!-- 🖼️ IMAGE -->
+                    <!--  IMAGE -->
                     <div class="position-relative">
                         <img src="{{ actualite.image ? asset('images/' ~ actualite.image) : asset('/public/images/default-auto.png') }}"
                              class="card-img-top" 
                              style="height: 327px; object-fit: cover; filter: brightness(0.8) contrast(1.1);"
                              alt="{{ actualite.titre }}">
                         
-                        <!-- 🏷️ BADGE OVERLAY -->
+                        <!--  BADGE OVERLAY -->
                         <div class="position-absolute top-0 start-0 p-3">
                             <span class="badge bg-warning text-dark px-3 py-2 fw-bold">VIP</span>
                         </div>
                         
-                        <!-- 🔥 HOT CORNER -->
+                        <!--  HOT CORNER -->
                         <div class="position-absolute top-0 end-0 p-3">
                             <span class="badge bg-danger px-2 py-1 rounded-pill"></span>
                         </div>
                     </div>
 
-                    <!-- 📝 BODY -->
+                    <!--  BODY -->
                     <div class="card-body p-4">
                         <h4 class="card-title text-white fw-bold mb-3 lh-base">
                             {{ actualite.titre }}
@@ -85,7 +85,7 @@
                              
                         </p>
                         
-                        <!-- 📊 META -->
+                        <!--  META -->
                         <div class="border-top border-secondary pt-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <!-- 🔗 FOOTER -->
+                    <!--  FOOTER -->
                     <div class="card-footer bg-transparent border-0 p-4 pt-0">
                         <button class="btn btn-warning w-100 fw-bold py-3 text-dark"
                                 data-bs-toggle="modal" 
@@ -105,12 +105,12 @@
                 </div>
             </div>
 {# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #}
-            <!-- 🔍 MODAL LUXE -->
+            <!--  MODAL LUXE -->
             <div class="modal fade" id="modal{{ actualite.id }}" tabindex="-1">
               <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-1">
                     <div class="modal-content bg-dark border-0" style="background: linear-gradient(145deg, #0f0f0f, #1a1a1a) !important;">
                         
-                        <!-- 📰 HEADER -->
+                        <!--  HEADER -->
                         <div class="modal-header bg-warning text-dark border-0">
                             <div class="w-100">
                                 <h3 class="modal-title fw-bold mb-2">{{ actualite.titre }}</h3>
@@ -119,10 +119,10 @@
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                         </div>
                         
-                        <!-- 📄 BODY -->
+                        <!--  BODY -->
                         <div class="modal-body p-4">
                             
-                            <!-- 🖼️ IMAGE PRINCIPALE -->
+                            <!--  IMAGE PRINCIPALE -->
                             <div class="row mb-4">
                                 <div class="col-12">
                                     <img src="{{ actualite.image ? asset('images/' ~ actualite.image) : asset('/public/images/default-auto.png') }}"
@@ -132,7 +132,7 @@
                                 </div>
                             </div>
                             
-                            <!-- 📝 CONTENU -->
+                            <!--  CONTENU -->
                             <div class="row">
                                 <div class="col-12">
                                     <div class="bg-dark p-4 rounded" style="background: rgba(255,255,255,0.05) !important;">
@@ -141,7 +141,7 @@
                                            {{ actualite.contenu|raw }}
                                         </div>
                                         
-                                        <!-- 📊 TAGS -->
+                                        <!--  TAGS -->
                                         <div class="mt-4 pt-4 border-top border-secondary">
                                             <div class="d-flex flex-wrap gap-2">
                                                 <span class="badge bg-secondary px-3 py-2">Automobile</span>
@@ -154,7 +154,7 @@
                             </div>
                         </div>
                         
-                        <!-- 🔗 FOOTER -->
+                        <!--  FOOTER -->
                         <div class="modal-footer bg-transparent border-top border-secondary">
                             <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">
                                 ❌ Fermer
@@ -170,7 +170,7 @@
             {% endfor %}
         </div>
         
-        <!-- 💔 EMPTY STATE -->
+        <!--  EMPTY STATE -->
         {% if actualites is empty %}
         <div class="row">
             <div class="col-12">
@@ -185,18 +185,18 @@
     </div>
 </div>
 
-<!-- 🏆 FOOTER LUXURY -->
+<!--  FOOTER LUXURY -->
 <div class="container-fluid py-5" style="background: linear-gradient(135deg, #0a0a0a, #1a1a1a) !important;">
     <div class="container">
-        <!-- 🏆 HEADER -->
+        <!--  HEADER -->
         <div class="text-center mb-5">
             <h2 class="display-5 text-warning fw-bold">UNIVERS PRESTIGE</h2>
             <p class="text-white-50 fs-5">L'excellence automobile dans l'ombre</p>
         </div>
 
-        <!-- 🎯 ROW AVEC 4 CARDS ALIGNÉES -->
+        <!--  ROW AVEC 4 CARDS ALIGNÉES -->
         <div class="row g-4">
-            <!-- 🚗 CARD 1 - SUPERCARS -->
+            <!--  CARD 1 - SUPERCARS -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card bg-transparent border-warning text-center h-100 position-relative overflow-hidden">
                     <img src="{{ asset('images/super-car.png') }}" 
@@ -214,7 +214,7 @@
                 </div>
             </div>
 
-            <!-- 🏍️ CARD 2 - MOTOS PRESTIGE -->
+            <!--  CARD 2 - MOTOS PRESTIGE -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card bg-transparent border-warning text-center h-100 position-relative overflow-hidden">
                     <img src="{{ asset('images/moto_prestige.png') }}" 
@@ -232,7 +232,7 @@
                 </div>
             </div>
 
-            <!-- 💎 CARD 3 - LUXURY EDITION -->
+            <!--  CARD 3 - LUXURY EDITION -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card bg-transparent border-warning text-center h-100 position-relative overflow-hidden">
                     <img src="{{ asset('images/luxureVehicule.png') }}" 
@@ -250,8 +250,8 @@
                 </div>
             </div>
 
-            <!-- ⚡ CARD 4 - ÉLECTRIQUE VIP -->
-             <!-- 💎 CARD 3 - LUXURY EDITION -->
+            <!--  CARD 4 - ÉLECTRIQUE VIP -->
+             <!--  CARD 3 - LUXURY EDITION -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card bg-transparent border-warning text-center h-100 position-relative overflow-hidden">
                     <img src="{{ asset('images/tesla.png') }}" 
@@ -271,15 +271,5 @@
         </div>
     </div>
 </div>
-<!-- 🚨 ANIMATION FORCÉE -->
-<script>
-setTimeout(() => {
-    document.querySelectorAll('.fade-in-on-load').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-        el.style.transition = 'all 1.5s ease-out';
-    });
-    console.log('✅ TEXTE FORCÉ VISIBLE !');
-}, 100);
-</script>
+
 {% endblock %}

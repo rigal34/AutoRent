@@ -39,23 +39,24 @@ AutoRent/
 │   │   ├── vendors.js                   #  Librairies externes
 │   │   └── runtime.js                   #  Runtime Webpack
 │   ├── actualites-css/                  #  STYLES PAGE ACTUALITÉS
-│   │   └── scroll-effects.css           #  FONCTIONNEL - Animations scroll
+│   │   └── scroll-effects.css           #    - Animations scroll
 │   ├── actualites-js/                   #  SCRIPTS PAGE ACTUALITÉS
 │   │   └── scroll-effects.js            #  FONCTIONNEL - Observer animations
-│   ├── css/                             #  STYLES PERSONNALISÉS
+│   ├── css/   
+|   |__ home-css                        #  STYLES PERSONNALISÉS
 │   │   ├── vehicules-list.css           #  Styles modernes page véhicules
-│   │   ├── home-animations.css          #  - Animations page d'accueil
-│   │   ├── shadow-effects.css           #  - Effets shadow orange cards
-│   │   ├── scroll-snap.css              #  - Styles scroll snap
+│   │   ├── home-css
 │   │   ├── navbar-fixed.css             #  - Navbar fixe responsive
 │   │   ├── card-hover-effects.css       #  - Effets hover avancés
 │   │   └── transitions-global.css       #  - Transitions réutilisables
 │   ├── js/                              #  SCRIPTS PERSONNALISÉS
-│   │   ├── home-scroll.js               #  - Gestion scroll accueil
+│   │   ├── home-js               #  - Gestion scroll accueil
+         
+
 │   │   ├── card-hover.js                #  - Effets hover cards
 │   │   ├── text-animations.js           #  - Animations texte
 │   │   ├── navbar-scroll.js             #  - Navbar réactive scroll
-│   │   ├── lazy-loading.js              #  - Chargement images lazy
+│   │   ├
 │   │   └── smooth-transitions.js        #  - Transitions pages
 │   ├── images/
 │   │   ├── vehicules/                   # Images véhicules
@@ -250,7 +251,7 @@ AutoRent/
 │   ├── admin.fr.yaml                    # - Interface admin
 │   └── emails.fr.yaml                   # - Emails français
 ├── vendor/                             # DÉPENDANCES COMPOSER
-├── docs/                               # 🆕 NOUVEAU - DOCUMENTATION
+├── docs/                               # - DOCUMENTATION
 │  
 ├── .env                                # VARIABLES ENVIRONNEMENT
 ├── .env.local          test            # ENVIRONNEMENT TEST
@@ -298,7 +299,7 @@ Installation du Back-Office avec EasyAdmin
 
 Le DashboardController a été généré, posant les bases du futur back-office qui sera sécurisé pour les administrateurs.
 
-🛠️ Modélisation de la Base de Données (Entités)
+ Modélisation de la Base de Données (Entités)
 La structure de la base de données a été définie avec Doctrine ORM, en créant les entités suivantes et leurs relations, conformément au diagramme entité-relation du projet :
 
 Categorie : Pour organiser les véhicules par type (Citadine, SUV, etc.).
@@ -307,7 +308,7 @@ Vehicule : Représente les véhicules disponibles à la location, avec leurs car
 
 Reservation : Gère les locations, avec des relations ManyToOne vers User (l'utilisateur qui loue) et vers Vehicule (le véhicule loué).
 
-🧪 Données de Test (Fixtures)
+ Données de Test (Fixtures)
 Pour faciliter le développement et les tests, des données fictives ont été générées et insérées dans la base de données à l'aide de DoctrineFixturesBundle et Faker :
 
 CategorieFixtures.php : Insère les catégories de véhicules de base.
@@ -318,7 +319,7 @@ VehiculeFixtures.php : Insère des exemples de véhicules, liés aux catégories
 
 ReservationFixtures.php : Génère des réservations de test, liant aléatoirement utilisateurs et véhicules.
 
-⚙️ Back-Office (EasyAdmin)
+ Back-Office (EasyAdmin)
 Un panneau d'administration a été mis en place avec EasyAdminBundle pour permettre la gestion du contenu du site.
 
 Configuration Générale du Dashboard

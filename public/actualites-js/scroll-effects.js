@@ -72,3 +72,14 @@ window.addEventListener('beforeunload', cleanupScrollEffects);
 if (document.readyState !== 'loading') {
     initScrollEffects();
 }
+
+//ANIMATION D'APPARITION DES TITRES 
+
+setTimeout(() => {
+    document.querySelectorAll('.fade-in-on-load').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        el.style.transition = 'all 1.5s ease-out';
+    });
+    console.log(' TEXTE FORCÉ VISIBLE !');
+}, 100);
