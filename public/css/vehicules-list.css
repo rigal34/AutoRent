@@ -95,3 +95,19 @@ tout ce qui est transition pour les boutons se fait ici en mode douceur */
 .vehicle-card:nth-child(4) { animation-delay: 0.4s; }
 .vehicle-card:nth-child(5) { animation-delay: 0.5s; }
 .vehicle-card:nth-child(6) { animation-delay: 0.6s; }
+
+
+
+
+/* effet de zoom sur l'image leger */
+.me-3.rounded {
+    transition: transform 0.3s ease;
+}
+
+.d-flex:hover .me-3.rounded {
+    transform: scale(1.05);
+}
+
+.d-flex {
+    overflow: hidden;
+}
