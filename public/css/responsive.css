@@ -18,10 +18,21 @@
     .hero-section header {
         min-height: 45vh !important;
     }
-    
+
+
+    /* CAROUSEL DE LA PAGE D'ACCEUIL */
     .carousel-inner img {
         height: 250px !important;
     }
 }
 
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
 
+
+/* CAROUSEL DE LA PAGE DE DÉTAIL */
+
+@media (max-width: 768px) {
+    .carousel-image {
+        height: 200px;
+    }
+}

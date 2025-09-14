@@ -10,54 +10,54 @@
 }
 
 /* Ombre légère avec effet de levée monte de 5px */
-.vehicle-card:hover {
+ .vehicle-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
-} 
+}  
 
 /* Contenu des cards et permet de s'agrandir de s'adapter
 flexibilité  */
-.vehicle-details {
+ .vehicle-details {
     min-height: 80px;
-}
+} 
 
 
 /* Je joue sur toute les bordures avec la correspondance de l enfant */
-.detail-item {
+ .detail-item {
     padding: 5px 0;
     border-bottom: 1px solid #f8f9fa;
-}
+} 
 
 /* Dernier élément de détail pour faire disparaître la bordure
 du bas */
-.detail-item:last-child {
+ .detail-item:last-child {
     border-bottom: none;
-}
+} 
 
-.card-title {
+ .card-title {
     min-height: 60px;
     display: flex;
     align-items: center;
     font-weight: 600;
-}
+} 
 
 /* Boutons
 tout ce qui est transition pour les boutons se fait ici en mode douceur */
 
-.btn-primary {
+ .btn-primary {
     border-radius: 6px;
     font-weight: 500;
     transition: all 0.2s ease;
-}
+} 
 /* Effet de levée monte de 1px a la survol */
-.btn-primary:hover {
+ .btn-primary:hover {
     transform: translateY(-1px);
-}
+} 
 
 
 
 /* Responsive améliorations */
-@media (max-width: 768px) {
+ @media (max-width: 768px) {
     .vehicle-card {
         margin-bottom: 20px;
     }
@@ -70,14 +70,14 @@ tout ce qui est transition pour les boutons se fait ici en mode douceur */
     .vehicle-details {
         min-height: auto;
     }
-}
+} 
 
 /* Animation d'entrée effet d'apparition des cards au moment du chargement de la page */
-.vehicle-card {
+ .vehicle-card {
     animation: fadeInUp 0.5s ease forwards;
-}
+} 
 
-@keyframes fadeInUp {
+ @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -86,21 +86,21 @@ tout ce qui est transition pour les boutons se fait ici en mode douceur */
         opacity: 1;
         transform: translateY(0);
     }
-}
+} 
 
 /* Délai d'animation pour chaque card */
-.vehicle-card:nth-child(1) { animation-delay: 0.1s; }
+ .vehicle-card:nth-child(1) { animation-delay: 0.1s; }
 .vehicle-card:nth-child(2) { animation-delay: 0.2s; }
 .vehicle-card:nth-child(3) { animation-delay: 0.3s; }
 .vehicle-card:nth-child(4) { animation-delay: 0.4s; }
 .vehicle-card:nth-child(5) { animation-delay: 0.5s; }
-.vehicle-card:nth-child(6) { animation-delay: 0.6s; }
+.vehicle-card:nth-child(6) { animation-delay: 0.6s; } 
 
 
 
 
 /* effet de zoom sur l'image leger */
-.me-3.rounded {
+ .me-3.rounded {
     transition: transform 0.3s ease;
 }
 
@@ -109,5 +109,31 @@ tout ce qui est transition pour les boutons se fait ici en mode douceur */
 }
 
 .d-flex {
-    overflow: hidden;
+    overflow: visible;  /* ou overflow: auto; */
+}
+
+
+/* CAROUSEL DE LA PAGE DE DÉTAIL */
+.vehicle-detail-carousel .carousel-image {
+    height: 400px;
+    object-fit: contain;
+    background-color: #ffffff;
+}
+
+/* Flèches du carousel */
+.vehicle-detail-carousel .carousel-control-prev,
+.vehicle-detail-carousel .carousel-control-next {
+    filter: invert(1) !important;
+    width: 25px !important;
+    height: 25px !important;
+}
+
+.vehicle-detail-carousel .carousel-control-prev-icon,
+.vehicle-detail-carousel .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    top: 50% !important; /* ← AJOUTE CETTE LIGNE */
+    transform: translateY(500%) !important; /* ← ET CELLE-CI */
 }
