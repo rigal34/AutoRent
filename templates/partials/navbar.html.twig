@@ -4,10 +4,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-prestige">
     <div class="container-fluid">
-        <!-- Logo positionné à gauche -->
         <a class="navbar-brand" href="{{ path('app_home') }}"> AutoRent</a>
 
-        <!-- Bouton burger -->
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarNav"
@@ -17,9 +15,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Contenu du menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Menu principal centré -->
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ path('app_home') }}">Accueil</a>
@@ -35,7 +31,6 @@
                 </li>
             </ul>
 
-            <!-- Boutons à droite -->
             <div class="btn-container d-flex gap-2">
                 {% if app.user %}
                     <a href="{{ path('app_logout') }}" class="btn btn-outline-warning">Déconnexion</a>
@@ -47,7 +42,6 @@
         </div>
     </div>
 </nav>
-
 
 
 {# //////////////////////////////////////FIN POUR LA NAVBAR//////////////////////////////////////////////////////////////////// #}

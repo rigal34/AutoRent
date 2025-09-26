@@ -113,7 +113,7 @@ tout ce qui est transition pour les boutons se fait ici en mode douceur */
 }
 
 
-/* CAROUSEL DE LA PAGE DE DÉTAIL */
+/* CAROUSEL DE LA PAGE DE DÉTAIL///////////////////////////////////////////////////////////////// */
 .vehicle-detail-carousel .carousel-image {
     height: 400px;
     object-fit: contain;
@@ -134,6 +134,8 @@ tout ce qui est transition pour les boutons se fait ici en mode douceur */
     width: 50px !important;
     height: 50px !important;
     border-radius: 50% !important;
-    top: 50% !important; /* ← AJOUTE CETTE LIGNE */
-    transform: translateY(500%) !important; /* ← ET CELLE-CI */
+    top: 50% !important; 
+    transform: translateY(500%) !important; 
 }
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////// */

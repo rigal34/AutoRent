@@ -7,7 +7,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Twig\Environment;
 
-class NotificationService
+class NotificationServicealors 
 {
     public function __construct(
         private MailerInterface $mailer,

@@ -50,16 +50,14 @@
  body {
         padding-top: 80px !important;
     }
-    
-     .navbar-prestige {
+
+    .navbar-prestige {
         background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%) !important;
         border-bottom: 2px solid #ffc107;
         box-shadow: 0 2px 15px rgba(255, 193, 7, 0.2);
         transition: all 0.3s ease;
-        /*  LARGEUR RÉDUITE POUR ALIGNER AU HEADER */
         margin: 0 auto;
-        max-width: calc(100% - 24px); /* Réduction de 20px de chaque côté */
-        /* Coins arrondis en bas pour style */
+        max-width: calc(100% - 24px);
     }
 
     .navbar-prestige .nav-link:hover {
@@ -71,7 +69,6 @@
         color: #ffc107 !important;
         font-weight: bold !important;
     }
-
 
     /* {# ::::::::::::FIN CSS::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #}
 {# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #}
