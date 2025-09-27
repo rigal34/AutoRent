@@ -7,7 +7,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Twig\Environment;
 
-class NotificationServicealors 
+class NotificationService
 {
     public function __construct(
         private MailerInterface $mailer,
@@ -16,7 +16,7 @@ class NotificationServicealors
 
     public function sendReservationNotifications(Reservation $reservation): void
 {
-    // 📧 EMAIL 1 : ADMIN (adresse d'envoi fixe )
+    //  EMAIL 1 : ADMIN (adresse d'envoi fixe )
     $adminEmail = (new Email())
         ->from('rigalbruno2@gmail.com')
         ->to('rigalbruno2@gmail.com')  
@@ -27,11 +27,11 @@ class NotificationServicealors
             'client' => $reservation->getUtilisateur()
         ]));
 
-    // 🔍 RÉCUPÉRATION EMAIL D'INSCRIPTION CLIENT
+    //  RÉCUPÉRATION EMAIL D'INSCRIPTION CLIENT
     $utilisateur = $reservation->getUtilisateur();
     $emailInscription = $utilisateur->getUserIdentifier(); // ← EMAIL D'INSCRIPTION
     
-    // 📧 EMAIL 2 : CLIENT (DYNAMIQUE depuis table User)
+    //  EMAIL 2 : CLIENT (DYNAMIQUE depuis table User)
     $clientEmail = (new Email())
         ->from('rigalbruno2@gmail.com')
         ->to($emailInscription)  // ← EMAIL D'INSCRIPTION RÉCUPÉRÉ
@@ -43,7 +43,7 @@ class NotificationServicealors
             'prixTotal' => $reservation->getPrixTotal()
         ]));
 
-    // 🚀 ENVOI DES 2 EMAILS DIFFÉRENTS
+    //  ENVOI DES 2 EMAILS DIFFÉRENTS
     $this->mailer->send($adminEmail);  // Admin reçoit
     $this->mailer->send($clientEmail); // Client reçoit
 }

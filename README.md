@@ -785,3 +785,8 @@ Validation complète du code HTML via le [W3C Markup Validator](https://validato
 -  Sémantique respectée
 
 **Résultat :**
+
+####  COMPTE ADMINISTRATEUR :
+- Email: eros@gmail.com
+- Rôle: ROLE_ADMIN
+- Accès: /admin (après connexion)
