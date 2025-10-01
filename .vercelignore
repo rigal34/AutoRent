@@ -1,7 +1,8 @@
-/var/cache/*
-/var/log/*
-/.history
-/.phpunit.cache
-/tests
-/vendor/symfony/*/Tests
-/vendor/doctrine/*/tests
+# Crée .vercelignore
+echo /var/cache/* > .vercelignore
+echo /var/log/* >> .vercelignore
+echo /.history >> .vercelignore
+echo /.phpunit.cache >> .vercelignore
+echo /tests >> .vercelignore
+echo /vendor/*/Tests >> .vercelignore
+echo /vendor/*/tests >> .vercelignore
