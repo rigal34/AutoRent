@@ -1,8 +1,0 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
-
-/* On importe notre fichier personnalisé juste après */
-@import "_custom.css";
-
-body {
-    background-color: skyblue;
-}

@@ -111,7 +111,7 @@ AutoRent/
 │   │   ├── Vehicule.php                 #  - getProchaineDateDisponible()
 │   │   └── Media.php                    #  - Gestion médias/images
 │   ├── Form/
-│   │   ├── ActualiteFormType.php        # 🆕 NOUVEAU - Formulaire actualités
+│   │   ├── ActualiteFormType.php        #  NOUVEAU - Formulaire actualités
 │   │   ├── ContactFormType.php
 │   │   ├── RegistrationFormType.php
 │   │   ├── ReservationFormType.php      #  - Validation dates
@@ -790,3 +790,15 @@ Validation complète du code HTML via le [W3C Markup Validator](https://validato
 - Email: eros@gmail.com
 - Rôle: ROLE_ADMIN
 - Accès: /admin (après connexion)
+##  Mise en ligne avec ngrok (Démonstration temporaire)
+
+Pour exposer temporairement l'application en ligne à des fins de démonstration :
+
+### Prérequis
+
+- ngrok installé ([Télécharger](https://ngrok.com/download))
+- Compte ngrok gratuit ([S'inscrire](https://dashboard.ngrok.com/signup))
+
+### Étapes de déploiement
+
+#### 1. Configuration initiale de ngrok

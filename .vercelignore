@@ -1,8 +1,0 @@
-# Crée .vercelignore
-echo /var/cache/* > .vercelignore
-echo /var/log/* >> .vercelignore
-echo /.history >> .vercelignore
-echo /.phpunit.cache >> .vercelignore
-echo /tests >> .vercelignore
-echo /vendor/*/Tests >> .vercelignore
-echo /vendor/*/tests >> .vercelignore

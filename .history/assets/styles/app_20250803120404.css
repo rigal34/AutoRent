@@ -1,8 +1,0 @@
-   import {alert} from 'https://cdn.jsdelivr.net/npm/b@11/dist/sweetalert2.all.min.js';
-    
-
-/* Removed invalid import statement */
-
-body {
-    background-color: skyblue;
-}

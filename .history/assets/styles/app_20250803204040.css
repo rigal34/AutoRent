@@ -1,8 +1,0 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
-
-
-@import "_custom.css";
-
-body {
-    background-color: skyblue;
-}
