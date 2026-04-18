@@ -279,7 +279,7 @@ AutoRent/
 ├──  Interface multilingue
 ├──  Design responsive complet
 
-
+```
 
 Démarrage et Fondations du Projet
 Ce projet a été initialisé avec Symfony 6.4, en utilisant la structure --webapp pour inclure tous les outils nécessaires au développement d'une application web moderne.
