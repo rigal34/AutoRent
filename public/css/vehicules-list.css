@@ -139,3 +139,20 @@ tout ce qui est transition pour les boutons se fait ici en mode douceur */
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Carousel détails véhicule - Affiche l'image entière évite le probleme d ecrasement */
+    .vehicle-detail-carousel .carousel-item img,
+    .vehicle-detail-carousel .carousel-image {
+        width: 100% !important;
+        height: 500px !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        background-color: #f8f9fa; /* Fond gris léger */
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .vehicle-detail-carousel .carousel-item img,
+        .vehicle-detail-carousel .carousel-image {
+            height: 300px !important;
+        }
+    }

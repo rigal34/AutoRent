@@ -44,19 +44,19 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
 
    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
 {
-    $user = $token->getUser();  // ← AJOUT
+    $user = $token->getUser();  //
     
-    // ← AJOUT
-    if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {  // ← AJOUT
-        return new RedirectResponse('/admin');  // ← AJOUT
-    }  // ← AJOUT
+    // Redirection en fonction du rôle de l'utilisateur
+    if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {  
+        return new RedirectResponse('/admin');  //
+    }  // 
     
     if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
         return new RedirectResponse($targetPath);
     }
 
     return new RedirectResponse($this->urlGenerator->generate('app_home'));
-    // ← SUPPRESSION du throw new \Exception
+    
 }
 
     protected function getLoginUrl(Request $request): string
