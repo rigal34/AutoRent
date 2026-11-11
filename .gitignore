@@ -21,3 +21,7 @@
 
 # Ignorer le dossier de l'historique local de VS Code
 /.history/
+
+# Base de données locale : ne doit jamais être dans le dépôt ni dans public/
+/public/database.db
+*.db
