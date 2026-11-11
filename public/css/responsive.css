@@ -1,89 +1,25 @@
-
-/* APPROCHE MOBILE FIRST - ON PART DU MOBILE ET ON AGRANDIT        */
+/* ================================================================ */
+/* RESPONSIVE - RÈGLES COMMUNES À TOUTES LES PAGES                   */
 /* ================================================================ */
 
-/* ============================================================
-   BASE MOBILE ( sans media query)
-   
-   ============================================================ */
+/* Le cadrage du carrousel d'accueil est dans home-css/home.css.     */
+/* Le cadrage du carrousel de la page de détail est dans             */
+/* css/vehicules-list.css.                                           */
 
-/* CAROUSEL DE LA PAGE D'ACCUEIL - Mobile par défaut */
-.carousel-inner img {
-    height: 250px;
+/* IMAGE D'UN VÉHICULE DANS UNE CARD
+   Toutes les photos prennent la même forme (4 de large pour 3 de haut),
+   quelle que soit la taille de l'écran : la photo reste proportionnée à la card.
+   object-fit: cover remplit le cadre sans déformer la photo. */
+.card .vehicle-card-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
 }
 
-/* CAROUSEL DE LA PAGE DE DÉTAIL - Mobile par défaut */
-.carousel-image {
-    height: 200px;
-}
-
-/* HERO SECTION - Mobile par défaut */
-.hero-section header {
-    min-height: 60vh; /* Valeur confortable pour mobile */
-}
-
-
-/* ============================================================
-   TABLETTE (à partir de 769px)
-   ============================================================ */
-@media (min-width: 769px) {
-    .carousel-inner img {
-        height: 350px;
-    }
-    
-    .carousel-image {
-        height: 300px;
-    }
-    
-    .hero-section header {
-        min-height: 55vh;
-    }
-}
-
-
-/* ============================================================
-   LAPTOP/DESKTOP (à partir de 1200px)
-   ============================================================ */
-@media (min-width: 1200px) {
-    .carousel-inner img {
-        height: 480px;
-    }
-    
-    .carousel-image {
-        height: 400px;
-    }
-    
-    .hero-section header {
-        min-height: 55vh;
-    }
-}
-
-
-/* ============================================================
-   ÉCRANS LARGES MAIS PAS TRÈS HAUTS
-   
-   ============================================================ */
-@media (min-width: 1200px) and (max-height: 800px) {
-    .hero-section header {
-        min-height: 50vh;
-    }
-    
-    .carousel-inner img {
-        height: 480px;
-    }
-}
-
-
-/* ============================================================
-   ÉCRANS TRÈS LARGES ET PAS TRÈS HAUTS
-   
-   ============================================================ */
-@media (min-width: 1400px) and (max-height: 700px) {
-    .hero-section header {
-        min-height: 45vh;
-    }
-    
-    .carousel-inner img {
-        height: 420px;
-    }
+/* Une card d'un véhicule : le texte ne déborde jamais de la card */
+.card .card-title {
+    overflow-wrap: anywhere;
 }

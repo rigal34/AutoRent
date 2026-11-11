@@ -120,39 +120,39 @@ tout ce qui est transition pour les boutons se fait ici en mode douceur */
     background-color: #ffffff;
 }
 
-/* Flèches du carousel */
+/* Flèches du carousel : centrées en hauteur sur la photo, dans un rond sombre pour rester visibles */
 .vehicle-detail-carousel .carousel-control-prev,
 .vehicle-detail-carousel .carousel-control-next {
-    filter: invert(1) !important;
-    width: 25px !important;
-    height: 25px !important;
+    width: 12%;
+    opacity: 0.9;
 }
 
 .vehicle-detail-carousel .carousel-control-prev-icon,
 .vehicle-detail-carousel .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    width: 50px !important;
-    height: 50px !important;
-    border-radius: 50% !important;
-    top: 50% !important; 
-    transform: translateY(500%) !important; 
+    background-color: rgba(0, 0, 0, 0.55);
+    background-size: 55%;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* Carousel détails véhicule - Affiche l'image entière évite le probleme d ecrasement */
-    .vehicle-detail-carousel .carousel-item img,
-    .vehicle-detail-carousel .carousel-image {
-        width: 100% !important;
-        height: 500px !important;
-        object-fit: contain !important;
-        object-position: center !important;
-        background-color: #f8f9fa; /* Fond gris léger */
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .vehicle-detail-carousel .carousel-item img,
-        .vehicle-detail-carousel .carousel-image {
-            height: 300px !important;
-        }
-    }
+/* Carousel détails véhicule : la photo garde toujours la même forme (4 de large pour 3 de haut),
+   elle remplit son cadre sans être écrasée, et elle ne dépasse jamais la hauteur de l'écran */
+.vehicle-detail {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.vehicle-detail-carousel .carousel-item img,
+.vehicle-detail-carousel .carousel-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+    max-height: calc(100vh - 140px);
+    object-fit: cover !important;
+    object-position: center !important;
+    background-color: #f8f9fa; /* Fond gris léger */
+}

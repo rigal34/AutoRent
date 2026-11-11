@@ -23,9 +23,9 @@
 <!-- SECTION HERO -->
 <section class="hero-section">
     <div class="container-fluid p-0">
-      <header class="bg-dark text-white text-center py-5 rounded min-vh-100 d-flex flex-column justify-content-center">
+      <header class="bg-dark text-white text-center rounded">
             <!--  TEXTE AVEC CLASSES POUR ANIMATION -->
-            <div class="container mt-1"> 
+            <div class="container hero-texte"> 
                 <h1 id="hero-title" class="display-4 fw-bold mt-0 hero-text">Bienvenue sur notre site de location de véhicules</h1>
                 <p id="hero-subtitle" class="fs-4 hero-subtitle">Louez le véhicule de vos rêves en quelques clics.</p>
             </div>
@@ -84,7 +84,7 @@
             {% for categorie in categories %}
                 <div class="col-md-3 mb-4 category-card">
                     <div class="card shadow-sm h-100"> 
-                        <img src="{{ asset('images/' ~ categorie.image) }}" class="card-img-top" alt="{{ categorie.nom }}">
+                        <img src="{{ asset('images/' ~ categorie.image) }}" class="card-img-top category-card-image" alt="{{ categorie.nom }}">
                         <div class="card-body text-center">
                            <a class="nav-link text-dark" href="{{ path('app_categorie_show', {'id': categorie.id}) }}"><strong>Voir les {{ categorie.nom }}</strong></a>
                         </div>

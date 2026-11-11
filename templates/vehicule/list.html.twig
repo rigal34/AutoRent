@@ -45,29 +45,26 @@
                 <div class="row g-4">
                    {% for vehicule in vehicules %}
     <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card h-100 shadow-sm border-0 vehicle-card">
-            <div class="card-body p-4">
-                
-                {#  IMAGE PETITE À CÔTÉ DU TITRE de la card #}
-                <div class="d-flex align-items-center mb-3 vehicle-card">
-    {% if vehicule.imagePrincipale %}
-        <div class="card-img-container">
-            <img src="{{ asset('images/' ~ vehicule.imagePrincipale) }}" 
-                 class="me-3 rounded vehicle-card-image" 
-                 alt="{{ vehicule.nom }}"
-                 style="width: 85px; height: 60px; object-fit: cover;">
-        </div>
-                    {% else %}
-                        <div class="me-3 bg-light rounded d-flex align-items-center justify-content-center" 
-                             style="width: 85px; height: 60px;">
-                            <i class="fas fa-car text-muted"></i>
-                        </div>
-                    {% endif %}
-                    
-                    <h5 class="card-title text-primary mb-0">
-                        {{ vehicule.nom }}
-                    </h5>
+        <div class="card h-100 shadow-sm border-0 vehicle-card overflow-hidden">
+
+            {#  IMAGE EN HAUT DE LA CARD, À LA LARGEUR DE LA CARD #}
+            {% if vehicule.imagePrincipale %}
+                <a href="{{ path('app_vehicule_show', {'id': vehicule.id}) }}">
+                    <img src="{{ asset('images/' ~ vehicule.imagePrincipale) }}"
+                         class="card-img-top vehicle-card-image"
+                         alt="{{ vehicule.nom }}">
+                </a>
+            {% else %}
+                <div class="vehicle-card-image bg-light d-flex align-items-center justify-content-center">
+                    <i class="fas fa-car fa-2x text-muted"></i>
                 </div>
+            {% endif %}
+
+            <div class="card-body p-4 d-flex flex-column">
+
+                <h5 class="card-title text-primary mb-3">
+                    {{ vehicule.nom }}
+                </h5>
 
                 <div class="vehicle-details mb-3">
                     <div class="detail-item mb-2">

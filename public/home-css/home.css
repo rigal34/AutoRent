@@ -81,3 +81,91 @@
     filter: brightness(1.1) contrast(1.1);
 }
 /******************  FIN SCROLL SNAP SIMPLE ********************************************************************************/
+
+/* ================================================================ */
+/* CADRAGE DU BANDEAU D'ACCUEIL ET DES IMAGES                        */
+/* ================================================================ */
+
+/* La barre de navigation est fixe et haute de 80px. Quand la page s'aimante sur une section
+   (scroll-snap), elle s'arrête 80px plus bas : le titre ne passe plus sous la barre. */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* La section ne force plus une hauteur d'écran entière :
+   elle prend la hauteur de son contenu (titre + carrousel). */
+.hero-section {
+    min-height: 0;
+}
+
+.hero-section header {
+    overflow: hidden;               /* les coins arrondis coupent proprement l'image */
+    padding-top: 1.75rem;
+}
+
+.hero-section .hero-texte {
+    padding-bottom: 1.25rem;
+}
+
+/* Le titre grandit avec la largeur de l'écran, entre 1.75rem et 2.9rem :
+   il tient sur une ligne sur un grand écran et laisse la place à la photo */
+.hero-section #hero-title {
+    font-size: clamp(1.75rem, 3vw, 2.9rem);
+}
+
+/* Le carrousel est centré et ne dépasse pas 1280px de large :
+   sur un très grand écran, la photo n'est plus étirée en une bande étroite. */
+.hero-section .carousel {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Hauteur de la photo : elle suit la hauteur de l'écran.
+   - jamais moins de 320px (sinon on ne voit qu'une tranche de la photo)
+   - jamais plus de 720px
+   - entre les deux : la hauteur de l'écran moins la barre de navigation et le titre.
+   object-fit: cover remplit le cadre sans déformer. La partie de la photo qu'on garde
+   reste réglée photo par photo dans assets/styles/app.css (object-position). */
+.hero-section .carousel-item img {
+    width: 100%;
+    height: clamp(320px, calc(100vh - 270px), 720px);
+    object-fit: cover;
+}
+
+/* Tablette et téléphone : le titre prend plus de lignes, la photo est moins haute */
+@media (max-width: 768px) {
+    .hero-section header {
+        padding-top: 1.25rem;
+    }
+
+    .hero-section .carousel-item img {
+        height: clamp(240px, 46vh, 420px);
+    }
+
+    .hero-section .carousel-caption h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* SECTION CATÉGORIES : les cards restent dans une largeur lisible */
+.categories-section {
+    padding: 64px 0;
+}
+
+.categories-section .container-fluid {
+    max-width: 1280px;
+}
+
+/* Photo d'une catégorie : même forme pour toutes, sans déformation */
+.category-card .category-card-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 768px) {
+    .categories-section {
+        padding: 40px 0;
+    }
+}

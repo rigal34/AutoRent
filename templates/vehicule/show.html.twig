@@ -7,16 +7,15 @@
 {% block stylesheets %}
     {{ parent() }}
    
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vehicules-list.css') }}">
    
 {% endblock %}
 
 {% block body %}
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
+<div class="container-fluid vehicle-detail">
+    <div class="row g-4 align-items-start">
+        <div class="col-lg-7">
     {% if vehicule.images is not empty %}
        <div id="vehicleCarousel" class="carousel slide vehicle-detail-carousel" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -36,7 +35,7 @@
 
             <div class="carousel-indicators">
                 {% for key, image in vehicule.images %}
-                <button type="button" data-bs-target="#carouselImages" data-bs-slide-to="{{ key }}" 
+                <button type="button" data-bs-target="#vehicleCarousel" data-bs-slide-to="{{ key }}" 
                         class="{{ key == 0 ? 'active' : '' }}"></button>
                 {% endfor %}
             </div>
@@ -44,7 +43,7 @@
     {% endif %}
 </div>
 
-        <div class="col-md-4 mt-5">
+        <div class="col-lg-5">
             <h2 class="mb-3">{{ vehicule.nom }}</h2>
             <p class="text-muted">{{ vehicule.description | raw }}</p>
 
