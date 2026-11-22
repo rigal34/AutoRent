@@ -17,6 +17,19 @@ class UserFixtures extends Fixture
         
     }
 
+    // Le mot de passe du compte administrateur de démonstration n'est plus écrit dans le code :
+    // il se lit dans le réglage MOT_DE_PASSE_ADMIN_DEMO, à placer dans le fichier .env.local,
+    // qui reste sur l'ordinateur et ne part jamais sur GitHub.
+    private function motDePasseAdmin(): string
+    {
+        $motDePasse = $_ENV['MOT_DE_PASSE_ADMIN_DEMO'] ?? $_SERVER['MOT_DE_PASSE_ADMIN_DEMO'] ?? '';
+        if (strlen($motDePasse) < 12) {
+            throw new \RuntimeException('Avant de charger les données de démonstration, ajoute dans le fichier .env.local une ligne MOT_DE_PASSE_ADMIN_DEMO= suivie d\'un mot de passe d\'au moins 12 caractères.');
+        }
+
+        return $motDePasse;
+    }
+
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
@@ -31,7 +44,7 @@ class UserFixtures extends Fixture
                 
                 $this->userPasswordHasher->hashPassword(
                     $user,
-                    'password123' 
+                    bin2hex(random_bytes(16)) // mot de passe tiré au hasard : ces comptes de démonstration ne servent pas à se connecter 
                 )
             );
             $user->setRoles(['ROLE_USER']); 
@@ -50,7 +63,7 @@ class UserFixtures extends Fixture
             
             $this->userPasswordHasher->hashPassword(
                 $adminUser,
-                'adminpassword' 
+                $this->motDePasseAdmin() 
             )
         );
         $adminUser->setRoles(['ROLE_ADMIN']); 
